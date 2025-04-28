@@ -1,0 +1,54 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "qweasdzxcee"
+      MYSQL_DATABASE: "appdb"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "qweasdzxcee"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - test-network
+    ports:
+      - '3306:3306'
+    restart: on-failure
+ 
+  phpmyadmin:
+      image: phpmyadmin:latest
+      container_name: phpmyadmin
+      environment:
+         PMA_HOST: mysql
+         PMA_PORT: 3306
+         MYSQL_ROOT_PASSWORD: "qweasdzxcee"
+      networks:
+         - test-network
+      ports:
+         - '8080:80'
+      depends_on:
+         - mysql
+      
+  laravel:
+      container_name: laravel
+      image: bitnami/laravel:latest
+      environment:
+         - DB_CONNECTION=mysql
+         - DB_HOST=mysql
+         - DB_PORT=3306
+         - DB_DATABASE="appdb"
+         - DB_USERNAME="admin"
+         - DB_PASSWORD="qweasdzxcee"
+      volumes:
+         - ./backend:/app
+      ports:
+         - '8000:8000'
+      networks:
+         - test-network
+      depends_on:
+         - mysql
+      restart: on-failure
+
+networks:
+   test-network:
+      driver: bridge
