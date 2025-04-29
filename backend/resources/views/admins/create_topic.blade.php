@@ -82,18 +82,18 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="w-50">Тип ответа</h3>
                         <select id="answer_type" class="form-control w-50" onchange="changeAnswerType()">
-                            <option value="0">Single</option>
-                            <option value="1">Multiple</option>
-                            <option value="2">Text</option>
+                            <option value="0">Один правильный</option>
+                            <option value="1">Много правильных</option>
+                            <option value="2">Текст</option>
                         </select>
                     </div>
                     <div id="answers">
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <input type="text" class="form-control w-75" id="Inputname" name="answer" placeholder="Ответ">
                             <label class="custom-control custom-radio-md ml-3">
                                 <input type="radio" class="custom-control-input" name="answer_r" value="1" checked="">
                                 <span class="custom-control-label"></span>
                             </label>
+                            <input type="text" class="form-control w-75" id="Inputname" name="answer" placeholder="Ответ">
                             <button type="button" class="btn btn-danger my-1" onclick="removeAnswer(this)">X</button>
                         </div>
                     </div>
@@ -206,11 +206,11 @@
         function return_signle_answer(value,id, is_correct) {
             return `
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                    <input type="text" class="form-control w-75" id="Inputname" name="answer" value="${value}" placeholder="Ответ">
                     <label class="custom-control custom-radio-md ml-3">
                         <input type="radio" class="custom-control-input" name="answer_r" value="${id}" ${is_correct ? 'checked' : ''}>
                         <span class="custom-control-label"></span>
                     </label>
+                    <input type="text" class="form-control w-75" id="Inputname" name="answer" value="${value}" placeholder="Ответ">
                     <button type="button" class="btn btn-danger my-1" onclick="removeAnswer(this)">X</button>
                 </div>
             `;
@@ -219,11 +219,11 @@
         function return_multiple_answer(value,id, is_correct) {
             return `
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                    <input type="text" class="form-control w-75" id="Inputname" name="answer" value="${value}" placeholder="Ответ">
                     <label class="custom-control custom-checkbox-md ml-3">
                         <input type="checkbox" class="custom-control-input" name="answer_r" value="${id}" ${is_correct ? 'checked' : ''}>
                         <span class="custom-control-label"></span>
                     </label>
+                     <input type="text" class="form-control w-75" id="Inputname" name="answer" value="${value}" placeholder="Ответ">
                     <button type="button" class="btn btn-danger my-1" onclick="removeAnswer(this)">X</button>
                 </div>
             `;
