@@ -6,7 +6,7 @@ use App\Models\Topic;
 
 class TopicController extends Controller
 {
-    public function createTopic()
+    public function create()
     {
         return view('admins.create_topic');
     }

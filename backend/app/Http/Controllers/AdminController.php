@@ -9,5 +9,5 @@ class AdminController extends Controller
         return view('admins.dashboard');
     }
 
-    
+    public 
 }
