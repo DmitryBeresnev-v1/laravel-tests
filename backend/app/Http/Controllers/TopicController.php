@@ -16,6 +16,11 @@ class TopicController extends Controller
         return view('subjects.dashboard');
     }
 
+    public function index()
+    {
+        return view('admins.view_topic');
+    }
+
     
     
 }
