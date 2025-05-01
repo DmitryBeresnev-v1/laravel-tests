@@ -4,10 +4,11 @@
     <!--app-content open-->
     <!-- PAGE-HEADER -->
     <div class="page-header">
-        <h1 class="page-title">Все темы</h1>
+        <h1 class="page-title">Мои темы</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Все темы</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Доска</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ваши созданные темы</li>
             </ol>
         </div>
     </div>
@@ -29,21 +30,24 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">Класс</th>
-                                    <th class="wd-15p border-bottom-0">Предмет</th>
                                     <th class="wd-15p border-bottom-0">Заголовок</th>
                                     <th class="wd-15p border-bottom-0">Тест</th>
-                                    <th class="wd-15p border-bottom-0">Автор</th>
                                     <th class="wd-15p border-bottom-0">Дата создания</th>
+                                    <th class="align-middle text-center">Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>6</td>
-                                    <td>Физика</td>
-                                    <td>Оптика</td>
-                                    <td>Есть</td>
-                                    <td>Иванов Иван Иванович</td>
+                                    <td>Тема</td>
+                                    <td>Да</td>
                                     <td><span>09 Dec 2017</span></td>
+
+                                    <td class="text-center align-middle">
+                                        <div class="btn-group align-top">
+                                            <button class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</button> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

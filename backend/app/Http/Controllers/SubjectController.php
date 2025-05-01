@@ -6,13 +6,9 @@ use App\Models\Subject;
 
 class SubjectController extends Controller
 {
-    public function view()
-    {
-        return view('subjects.dashboard');
-    }
     public function index()
     {
-        //
+        return view('admins.create_subject');
     }
 
     /* Show the form for creating a new resource. */

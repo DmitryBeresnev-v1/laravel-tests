@@ -4,14 +4,9 @@ namespace App\Http\Controllers;
 
 class AdminController extends Controller
 {
-    public function view()
-    {
-        return view('admins.dashboard');
-    }
-
     public function index()
     {
-        //
+        return view('admins.dashboard');
     }
 
     /* Show the form for creating a new resource. */

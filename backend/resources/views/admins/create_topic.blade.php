@@ -59,7 +59,7 @@
 
                 <div class="card-footer text-end">
                     <a href="javascript:void(0)" class="btn btn-primary my-1">Создать</a>
-                    <a href="javascript:void(0)" class="btn btn-danger my-1">Отмена</a>
+                    <a href="/admin/topic" class="btn btn-danger my-1">Отмена</a>
                 </div>
             </div>
         </div>

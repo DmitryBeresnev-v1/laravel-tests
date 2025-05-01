@@ -6,14 +6,9 @@ use App\Models\Topic;
 
 class TopicController extends Controller
 {
-    public function view()
-    {
-        return view('subjects.dashboard');
-    }
-
     public function index()
     {
-        return view('admins.view_topic');
+        return view('admins.user_topics');
     }
 
     /* Show the form for creating a new resource. */

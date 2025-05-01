@@ -18,98 +18,39 @@
                                 <h3>Общая информация</h3>
                             </li>
                             <li class="slide">
-                                <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
+                                <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/topic/all"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Все темы</span></a>
                             </li>
                             <li class="sub-category">
-                                <h3>Управление</h3>
+                                <h3>Мои действия</h3>
                             </li>
                             <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-slack"></i><span class="side-menu__label">Создать</span><i class="angle fe fe-chevron-right"></i></a>
-                                <ul class="slide-menu">
-                                 
-                                    <li><a href="/subject" class="slide-item"> Предмет</a></li>
-                                    <li><a href="/topic" class="slide-item"> Тема</a></li>
-                                </ul>
-                            </li>
-                            <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                                        class="side-menu__icon fe fe-package"></i><span
-                                        class="side-menu__label">Архив</span><i
-                                        class="angle fe fe-chevron-right"></i></a>
-                                <ul class="slide-menu mega-slide-menu"> 
-                                    <li class="side-menu-label1"><a href="javascript:void(0)">Архив</a></li>
-                                    <div class="mega-menu">
-                                        <div class=""> 
-                                            <ul> 
-                                                <li><a href="alerts.html" class="slide-item"> Года</a></li>
-                                                <li><a href="buttons.html" class="slide-item"> Обучавшиеся</a></li>
-                                            </ul>
-                                        </div> 
-                                    </div>
-                                </ul>
+                                <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/topic"><i class="side-menu__icon fe fe-slack"></i><span class="side-menu__label">Мои темы</span></a>
                             </li>
                             <li class="sub-category">
                                 <h3>Просмотр</h3>
                             </li>
                             <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-layers"></i><span class="side-menu__label">Карточки</span><i class="angle fe fe-chevron-right"></i></a>
+                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-layers"></i><span class="side-menu__label">Клиент</span><i class="angle fe fe-chevron-right"></i></a>
                                 <ul class="slide-menu">
                                     <li class="side-menu-label1"><a href="javascript:void(0)">Предметы</a></li>
-                                    <li><a href="/cards" class="slide-item"> Все карточки</a></li>
-                                    <li><a href="/cards/create" class="slide-item"> Создать</a></li>
-                                    <li><a href="notify-list.html" class="slide-item"> Клиент</a></li>
+                                    <li><a href="/cards" class="slide-item"> Общий</a></li>
+                                    <li><a href="/cards/create" class="slide-item"> Предмет 1</a></li>
+                                    <li><a href="/cards/create" class="slide-item"> Предмет 2</a></li>
                                 </ul>
                             </li>
 
                             <li class="sub-category">
-                                <h3>Misc Pages</h3>
+                                <h3>Администратор</h3>
                             </li>
                             <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-users"></i><span class="side-menu__label">Authentication</span><i class="angle fe fe-chevron-right"></i></a>
-                                <ul class="slide-menu">
-                                    <li class="side-menu-label1"><a href="javascript:void(0)">Authentication</a></li>
-                                    <li><a href="login.html" class="slide-item"> Login</a></li>
-                                    <li><a href="register.html" class="slide-item"> Register</a></li>
-                                    <li><a href="forgot-password.html" class="slide-item"> Forgot Password</a></li>
-                                    <li><a href="lockscreen.html" class="slide-item"> Lock screen</a></li>
-                                    <li class="sub-slide">
-                                        <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0)"><span class="sub-side-menu__label">Error Pages</span><i class="sub-angle fe fe-chevron-right"></i></a>
-                                        <ul class="sub-slide-menu">
-                                            <li><a href="400.html" class="sub-slide-item"> 400</a></li>
-                                            <li><a href="401.html" class="sub-slide-item"> 401</a></li>
-                                            <li><a href="403.html" class="sub-slide-item"> 403</a></li>
-                                            <li><a href="404.html" class="sub-slide-item"> 404</a></li>
-                                            <li><a href="500.html" class="sub-slide-item"> 500</a></li>
-                                            <li><a href="503.html" class="sub-slide-item"> 503</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="slide">
-                                <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
-                                    <i class="side-menu__icon fe fe-cpu"></i>
-                                    <span class="side-menu__label">Submenu items</span><i class="angle fe fe-chevron-right"></i></a>
-                                <ul class="slide-menu">
-                                    <li class="side-menu-label1"><a href="javascript:void(0)">Submenu items</a></li>
-                                    <li><a href="javascript:void(0)" class="slide-item">Submenu-1</a></li>
-                                    <li class="sub-slide">
-                                        <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0)"><span class="sub-side-menu__label">Submenu-2</span><i class="sub-angle fe fe-chevron-right"></i></a>
-                                        <ul class="sub-slide-menu">
-                                            <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.1</a></li>
-                                            <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.2</a></li>
-                                            <li class="sub-slide2">
-                                                <a class="sub-side-menu__item2" href="javascript:void(0)" data-bs-toggle="sub-slide2"><span class="sub-side-menu__label2">Submenu-2.3</span><i class="sub-angle2 fe fe-chevron-right"></i></a>
-                                                <ul class="sub-slide-menu2">
-                                                    <li><a href="javascript:void(0)" class="sub-slide-item2">Submenu-2.3.1</a></li>
-                                                    <li><a href="javascript:void(0)" class="sub-slide-item2">Submenu-2.3.2</a></li>
-                                                    <li><a href="javascript:void(0)" class="sub-slide-item2">Submenu-2.3.3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.4</a></li>
-                                            <li><a class="sub-slide-item" href="javascript:void(0)">Submenu-2.5</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+
+                                <li class="slide">
+                                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/users"><i class="side-menu__icon fe fe-users"></i><span class="side-menu__label">Пользователи</span></a>
+                                </li>
+
+                                <li class="slide">
+                                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/subject"><i class="side-menu__icon fe fe-cpu"></i><span class="side-menu__label">Создать предмет</span></a>
+                                </li>
                             </li>
 
                         </ul>

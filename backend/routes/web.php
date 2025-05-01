@@ -20,9 +20,9 @@ Route::get('/{name}', [SubjectController::class,"view"]);
 Route::get('/admin', [AdminController::class,"view"]);
 
 
-Route::get('admin/topic', [TopicController::class,"index"]);                //Вывод всех тем клиента
-Route::get('admin/topic/all', [TopicController::class,"show"]);             //Вывод всех тем
-Route::get('admin/topic/{id}', [TopicController::class,"view"]);            //Вывод конкретной темы
+Route::get('admin/topic', [TopicController::class,"index"]);                                    //Вывод всех тем клиента
+Route::get('admin/topic/all', [AdminController::class,"index"]);                                //Вывод всех тем
+Route::get('admin/topic/{id}', [TopicController::class,"view"])->where('id','[0-9]+');          //Вывод конкретной темы
 
 Route::get('admin/topic/create', [TopicController::class,"create"]);        //Форма создания темы
 Route::get('admin/topic/edit', [TopicController::class,"edit"]);            //Форма изменения темы
