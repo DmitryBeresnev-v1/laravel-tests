@@ -6,6 +6,10 @@ use App\Models\Topic;
 
 class TopicController extends Controller
 {
+    public function view()
+    {
+        return view('admins.view_topic');
+    }
     public function index()
     {
         return view('admins.user_topics');

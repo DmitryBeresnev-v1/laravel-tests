@@ -7,8 +7,7 @@
         <h1 class="page-title">Мои темы</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Доска</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Ваши созданные темы</li>
+                <li class="breadcrumb-item active" aria-current="page">Мои темы</li>
             </ol>
         </div>
     </div>
@@ -45,7 +44,7 @@
 
                                     <td class="text-center align-middle">
                                         <div class="btn-group align-top">
-                                            <button class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</button> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Подробнее</button> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>

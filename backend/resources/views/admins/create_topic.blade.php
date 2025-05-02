@@ -7,8 +7,8 @@
         <h1 class="page-title">Добавить тему</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Empty</li>
+                <li class="breadcrumb-item"><a href="/admin/topic">Мои темы</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Добавить тему</li>
             </ol>
         </div>
     </div>
@@ -17,7 +17,7 @@
         <div>
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Первичная информация</h3>
+                    <h3 class="card-title">Добавление новой темы</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">

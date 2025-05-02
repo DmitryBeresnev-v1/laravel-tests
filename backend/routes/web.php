@@ -22,7 +22,7 @@ Route::get('/admin', [AdminController::class,"view"]);
 
 Route::get('admin/topic', [TopicController::class,"index"]);                                    //Вывод всех тем клиента
 Route::get('admin/topic/all', [AdminController::class,"index"]);                                //Вывод всех тем
-Route::get('admin/topic/{id}', [TopicController::class,"view"])->where('id','[0-9]+');          //Вывод конкретной темы
+//Route::get('admin/topic/{id}', [TopicController::class,"view"])->where('id','[0-9]+');          //Вывод конкретной темы
 
 Route::get('admin/topic/create', [TopicController::class,"create"]);        //Форма создания темы
 Route::get('admin/topic/edit', [TopicController::class,"edit"]);            //Форма изменения темы
@@ -46,3 +46,8 @@ Route::get('admin/subject/edit', [SubjectController::class,"edit"]);            
 Route::post('admin/subject/{id}/store', [SubjectController::class,"store"]);      //Запись БД
 Route::post('admin/subject/{id}/update', [SubjectController::class,"update"]);    //Изменения БД
 Route::get('admin/subject/{id}/delete', [SubjectController::class,"destroy"]);    //Удаление БД
+
+
+//Создания физуала без функционала
+Route::get('admin/topic/view', [TopicController::class,"view"]);
+Route::get('admin/test/', [SubjectController::class,"destroy"]);
