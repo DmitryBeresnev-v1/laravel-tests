@@ -7,7 +7,7 @@
         <h1 class="page-title">Информация о теме</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="admin/topic">Темы</a></li>
+                <li class="breadcrumb-item"><a href="/admin/topic">Мои темы</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Информация о теме</li>
             </ol>
         </div>
