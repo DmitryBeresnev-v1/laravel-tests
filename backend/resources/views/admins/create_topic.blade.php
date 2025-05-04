@@ -65,54 +65,7 @@
         </div>
     </div>
             
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">Создание теста</div>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="Inputname">Вопрос</label>
-                        <input type="text" class="form-control" id="question" name="question" placeholder="Вопрос">
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="w-50">Тип ответа</h3>
-                        <select id="answer_type" class="form-control w-50" onchange="changeAnswerType()">
-                            <option value="0">Один правильный</option>
-                            <option value="1">Много правильных</option>
-                            <option value="2">Текст</option>
-                        </select>
-                    </div>
-                    <div id="answers">
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <label class="custom-control custom-radio-md ml-3">
-                                <input type="radio" class="custom-control-input" name="answer_r" value="1" checked="">
-                                <span class="custom-control-label"></span>
-                            </label>
-                            <input type="text" class="form-control w-75" id="Inputname" name="answer" placeholder="Ответ">
-                            <button type="button" class="btn btn-danger my-1" onclick="removeAnswer(this)">X</button>
-                        </div>
-                    </div>
-                    <button type="button" id="add_answer" class="btn btn-primary mt-3" onclick="addAnswer()">Добавить ответ</button>
-                    <div class="d-flex justify-content-end align-items-center mt-3">
-                        <button type="button" class="btn btn-primary" onclick="saveQuestion()">Сохранить</button>
-                    </div>
-                </div>
-                <div class="col-6 bg-gray-500" >
-                    <textarea name="questions" id="questions_json" style="display: none;"></textarea>
-                    <div id="questions_view" class="mt-4">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer text-end">
-            <a href="javascript:void(0)" class="btn btn-primary my-1">Deactivate</a>
-            <a href="javascript:void(0)" class="btn btn-danger my-1">Delete Account</a>
-        </div>
-    </div>
+ 
 
 @endsection
 
