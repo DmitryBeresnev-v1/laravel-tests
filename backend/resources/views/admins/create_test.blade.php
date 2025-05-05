@@ -31,7 +31,7 @@
                 <div class="row mb-4">
                     <label class="col-md-3 form-label">Описание (опционально) :</label>
                     <div class="col-md-9">
-                        <input type="text" name="test_description" class="form-control" placeholder="Проверка знаний по темам представленным в описании">
+                        <input type="text" name="test_description" class="form-control" placeholder="Проверка знаний по темам представленным в теме">
                     </div>
                 </div>
             </div>
@@ -218,6 +218,15 @@
         const answerType = answerTypeSelect?.value ?? '0';
         const inputType = answerType === '1' ? 'checkbox' : 'radio';
 
+        if (answerType === '2') {
+            const textInputHtml = `
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <input type="text" class="form-control me-2" name="questions[${questionIndex}][answers][${answerIndex}][text]" placeholder="Ответ">
+                </div>`;
+            answersContainer.insertAdjacentHTML('beforeend', textInputHtml);
+            return;
+        }
+
         const nameAttr = inputType === 'radio'
             ? `questions[${questionIndex}][correct]`
             : `questions[${questionIndex}][answers][${answerIndex}][correct]`;
@@ -266,9 +275,20 @@
 
         const type = selectElement.value;
 
-        if (type !== '2') {
+        // Находим кнопку добавления ответа
+        const addAnswerButton = questionCard.querySelector('.card-footer button');
+
+        if (type === '2') {
+            addAnswer(questionIndex);
+            if (addAnswerButton) {
+                addAnswerButton.style.display = 'none'; // Скрываем кнопку
+            }
+        } else {
             for (let i = 0; i < 4; i++) {
                 addAnswer(questionIndex);
+            }
+            if (addAnswerButton) {
+                addAnswerButton.style.display = ''; // Показываем кнопку
             }
         }
     }
