@@ -19,7 +19,7 @@
         @csrf
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Вопросы теста</div>
+                <div class="card-title">Информация о тесте</div>
             </div>
             <div class="card-body">
                 <div class="row mb-4">
@@ -35,6 +35,28 @@
                     </div>
                 </div>
             </div>
+            <div class="card-footer">
+                <div class="form-group">
+                    <label class="form-label">Зависимость</label>
+                    <div class="row">
+                        <div class="col-md-4 mb-2">
+                            <select class="form-control select2 form-select">
+                                    <option value="0">Класс</option>
+                                </select>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <select class="form-control select2 form-select">
+                                    <option value="0">Предмет</option>
+                                </select>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <select class="form-control select2 form-select">
+                                    <option value="0">Тема</option>
+                                </select>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
 
         <div class="card">
@@ -116,13 +138,12 @@
                         <div class="card-footer text-end">
                             <button type="button" class="btn btn-outline-secondary" onclick="addAnswer(1)">Добавить ответ</button>
                         </div>
-                    </div>
-                    
-            </div>
+                    </div>                   
+                </div>
 
-            <div class="text-center">
-                <a href="javascript:void(0)" class="btn btn-outline-primary" onclick="addQuestion()">Добавить вопрос</a>
-            </div>
+                <div class="text-center">
+                    <a href="javascript:void(0)" class="btn btn-outline-primary" onclick="addQuestion()">Добавить вопрос</a>
+                </div>
             
             </div>
 

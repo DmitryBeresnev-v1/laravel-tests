@@ -48,5 +48,5 @@ Route::post('admin/subject/{id}/update', [SubjectController::class,"update"]);  
 Route::get('admin/subject/{id}/delete', [SubjectController::class,"destroy"]);    //Удаление БД
 
 
-//Создания физуала без функционала
+//Создания визуала без функционала
 Route::get('admin/topic/view', [TopicController::class,"view"]);
