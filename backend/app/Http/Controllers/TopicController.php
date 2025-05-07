@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\School_classes;
+use Illuminate\Http\Request; // Необходим для работы с Request
+
+use App\Models\School_class;
+use App\Models\Subject;
 use App\Models\Topic;
 
 class TopicController extends Controller
@@ -18,7 +21,9 @@ class TopicController extends Controller
     /* Show the form for creating a new resource. */
     public function create()
     {
-        return view('admins.create_topic');
+        $class=School_class::all();
+        $subject=Subject::all();
+        return view('admins.create_topic', ["class"=>$class, "subject"=>$subject]);
     }
 
     /* Store a newly created resource in storage. */

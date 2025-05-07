@@ -62,12 +62,14 @@
                             </thead>
                             <tbody>
                                 @foreach ($subject as $item)
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>
-                                        <a href="javascript:void(0)" class="btn btn-primary">Редактировать</a>
-                                        <a href="javascript:void(0)" class="btn btn-danger">Архивировать</a>
-                                    </td>
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>
+                                            <a href="javascript:void(0)" class="btn btn-primary">Редактировать</a>
+                                            <a href="javascript:void(0)" class="btn btn-danger">Архивировать</a>
+                                        </td>
+                                    </tr>    
                                 @endforeach
                             </tbody>
                         </table>

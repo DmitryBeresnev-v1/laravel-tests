@@ -33,19 +33,19 @@
                             <div class="col-xl-8">
                                 <label class="form-label">Предмет/дисциплина</label>
                                 <select class="form-control select2 form-select">
-                                        <option value="0">Предмет</option>
-                                        -------
-                                            <option value="1">valume</option>
-                                        -------
+                                        <option value="0">Выбирите предмет</option>
+                                        @foreach ($subject as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endforeach
                                     </select>
                             </div>
                             <div class="col-md-4 mb-2">
-                                <label class="form-label">Класс</label>
+                                <label class="form-label">Выбирите класс</label>
                                 <select class="form-control select2 form-select">
                                         <option value="0">Класс</option>
-                                        -------
-                                            <option value="1">valume</option>
-                                        -------
+                                        @foreach ($class as $item)
+                                            <option value="{{$item->class_number}}">{{$item->name}}</option>
+                                        @endforeach
                                     </select>
                             </div>
                         </div>
@@ -57,9 +57,9 @@
                     </div>
                 </div>
 
-                <div class="card-footer text-end">
-                    <a href="javascript:void(0)" class="btn btn-primary my-1">Создать</a>
-                    <a href="/admin/topic" class="btn btn-danger my-1">Отмена</a>
+                <div class="card-footer">
+                    <a href="/admin/topic" class="btn btn-default">Назад</a>
+                    <button type="submit" class="btn btn-success my-1 float-end">Сохранить</button>
                 </div>
             </div>
         </div>
