@@ -15,20 +15,20 @@
 
     <div class="row">
         <div class="col-md-6  col-xl-6">
-            <div class="card">
-                <form>
-                    @csrf
+            <form action="{{ route('subject.store')}}" method="POST">
+            @csrf    
+                <div class="card">     
                     <div class="card-header">
                         <h3 class="card-title">Добавить</h3>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
                             <label for="InputName">Наименование:</label>
-                            <input type="text" class="form-control" id="InputName" name="name" placeholder="Физика или Знайка">
+                            <input type="text" class="form-control" id="InputName" name="subject_name" placeholder="Физика или Знайка">
                         </div>
                         <div class="form-group">
                             <label for="InputDecription">Описание:</label>
-                            <input type="text" class="form-control" id="InputDescription" name="description" placeholder="Наука об мире вокруг нас или Знать все и сразу ">
+                            <input type="text" class="form-control" id="InputDescription" name="subject_description" placeholder="Наука об мире вокруг нас или Знать все и сразу ">
                         </div>
 
                         <div clas="form-group">
@@ -37,15 +37,14 @@
                                 <a><i>Наименование должно быть уникальным. Справа указаны уже существующие предметы/дисциплины.</i></a>
                             </div>
                         </div>
-
-                    
                     </div>
                     <div class="card-footer text-end">
-                            <a href="javascript:void(0)" class="btn btn-primary">Создать</a>
+                            <button type="submit" class="btn btn-primary">Создать</button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
+
         <div class="col-md-6  col-xl-6">
             <div class="card">
                 <div class="card-header">

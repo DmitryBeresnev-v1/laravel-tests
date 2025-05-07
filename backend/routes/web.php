@@ -43,7 +43,7 @@ Route::get('admin/test/{id}/delete', [TestController::class,"destroy"]);    //У
 Route::get('admin/subject', [SubjectController::class,"index"]);                  //Вывод всех предметов/разделов клиенту
 Route::get('admin/subject/create', [SubjectController::class,"create"]);          //Форма создания предметов/разделов
 Route::get('admin/subject/edit', [SubjectController::class,"edit"]);              //Форма изменения предмета/раздела
-Route::post('admin/subject/store', [SubjectController::class,"store"]);           //Запись БД
+Route::post('admin/subject/store', [SubjectController::class,"store"])->name('subject.store');           //Запись БД
 Route::post('admin/subject/{id}/update', [SubjectController::class,"update"]);    //Изменения БД
 Route::get('admin/subject/{id}/delete', [SubjectController::class,"destroy"]);    //Удаление БД
 
