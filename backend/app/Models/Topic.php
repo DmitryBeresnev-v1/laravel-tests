@@ -10,8 +10,12 @@ class Topic extends Model
     use HasFactory;
 
     protected $fillable = [
-        'topic',
-        'description',
+        'subject_id',
         'class_id',
+        'title',
+        'description',
+        'created_by',
+        'difficulty',
+        'average_time',
     ];
 }

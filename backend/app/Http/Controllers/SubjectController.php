@@ -26,21 +26,18 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-         $request->validate([
-             'subject_name'=> 'required',
-             'subject_description'=> 'required',
-         ]);
+        $validated = $request->validate([
+             'subject_name' => 'required|string|max:255',
+             'subject_description' => 'required|string|max:255',
+        ]);
 
-          $subject_name = $request->subject_name;
-          $subject_description = $request->subject_description;
-        
         Subject::create([
-            "name"=>$subject_name,
-            "description"=>$subject_description,
-            'url_name' => Str::slug($request->input('subject_name')),
+            'name' => $validated['subject_name'],
+            'description' => $validated['subject_description'],
+            'url_name' => Str::slug($validated['subject_name']),
         ]);
         
-         return redirect()->back()->with('success', 'Record inserted successfully');
+        return redirect()->back()->with('success', 'Record inserted successfully');
     }
 
     /* Display the specified resource. */

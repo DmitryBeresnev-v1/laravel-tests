@@ -29,7 +29,27 @@ class TopicController extends Controller
     /* Store a newly created resource in storage. */
     public function store(Request $request)
     {
-        //
+//        dd($request);
+        $validated = $request->validate([
+            'topic_name' => 'required|string|max:255',
+            'subject_select' => 'required|integer|min:1',
+            'class_select' => 'required|integer|min:1',
+            'topic_description' => 'required',
+        ]);
+
+       Topic::create([
+           'title' => $validated['topic_name'],
+           'description' => $validated['topic_description'],
+           'class_id' => $validated['class_select'],
+           'subject_id' => $validated['subject_select'],
+        //    'average_time' => 0;
+        //    'difficulty' => 0;
+           'created_by' => '1', //Auth::user()->id,
+           
+       ]);
+       
+       return redirect()->back()->with('success', 'Record inserted successfully');
+  
     }
 
     /* Display the specified resource. */

@@ -26,7 +26,7 @@ Route::get('admin/topic/all', [AdminController::class,"index"]);                
 
 Route::get('admin/topic/create', [TopicController::class,"create"]);        //Форма создания темы
 Route::get('admin/topic/edit', [TopicController::class,"edit"]);            //Форма изменения темы
-Route::post('admin/topic/store', [TopicController::class,"store"]);         //Запись БД
+Route::post('admin/topic/store', [TopicController::class,"store"])->name('topic.store');         //Запись БД
 Route::post('admin/topic/{id}/update', [TopicController::class,"update"]);  //Изменения БД
 Route::get('admin/topic/{id}/delete', [TopicController::class,"destroy"]);  //Удаление БД
 
