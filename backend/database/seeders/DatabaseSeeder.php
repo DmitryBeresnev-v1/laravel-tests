@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             // ClassesSeeder::class,        //work, home
-            // add_admin_user::class        //work
+            // add_admin_user::class        //work, home
+            // add_basic_subject::class     //home,
         ]);
     }
 }

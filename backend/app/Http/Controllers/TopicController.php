@@ -9,9 +9,9 @@ use App\Models\Topic;
 
 class TopicController extends Controller
 {
-    public function view()
+    public function view($id)
     {
-        return view('admins.view_topic');
+        return view('admins.view_topic', ["id"=>$id]);
     }
     public function index()
     {
