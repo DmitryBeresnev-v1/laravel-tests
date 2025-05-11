@@ -22,23 +22,23 @@ Route::get('/admin', [AdminController::class,"view"]);
 
 Route::get('admin/topic', [TopicController::class,"index"]);                                    //Вывод всех тем клиента
 Route::get('admin/topic/all', [AdminController::class,"index"]);                                //Вывод всех тем
-Route::get('admin/topic/{id}', [TopicController::class,"view"])->where('id','[0-9]+');          //Вывод конкретной темы
+Route::get('admin/topic/{topicId}', [TopicController::class,"view"])->where('id','[0-9]+');          //Вывод конкретной темы
 
 Route::get('admin/topic/create', [TopicController::class,"create"]);                            //Форма создания темы
 Route::get('admin/topic/edit', [TopicController::class,"edit"]);                                //Форма изменения темы
 Route::post('admin/topic/store', [TopicController::class,"store"])->name('topic.store');        //Запись БД
-Route::post('admin/topic/{id}/update', [TopicController::class,"update"]);                      //Изменения БД
-Route::get('admin/topic/{id}/delete', [TopicController::class,"destroy"]);                      //Удаление БД
+Route::post('admin/topic/{topicId}/update', [TopicController::class,"update"]);                      //Изменения БД
+Route::get('admin/topic/{topicId}/delete', [TopicController::class,"destroy"]);                      //Удаление БД
 
-Route::get('admin/topic/{id}/test/create', [TestController::class,"create"]);
+Route::get('admin/topic/{topicId}/test/create', [TestController::class,"create"]);
 //Route::get('admin/topic/{id}/test/{id}', [TopicController::class,"view"]);
 
 Route::get('admin/test', [TestController::class,"index"]);                  //Вывод всех тестов клиенту
 Route::get('admin/test/create', [TestController::class,"create"]);          //Форма создания теста
 Route::get('admin/test/edit', [TestController::class,"edit"]);              //Форма изменения теста
 Route::post('admin/test/store', [TestController::class,"store"]);           //Запись БД
-Route::post('admin/test/{id}/update', [TestController::class,"update"]);    //Изменения БД
-Route::get('admin/test/{id}/delete', [TestController::class,"destroy"]);    //Удаление БД
+Route::post('admin/test/{testId}/update', [TestController::class,"update"]);    //Изменения БД
+Route::get('admin/test/{testId}/delete', [TestController::class,"destroy"]);    //Удаление БД
 
 
 //Только администратор должен иметь возможность создавать предметы/разделы

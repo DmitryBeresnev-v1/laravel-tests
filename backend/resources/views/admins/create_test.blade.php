@@ -14,7 +14,7 @@
             </ol>
         </div>
     </div>
-    
+
     <form method="POST" action="/admin/test/store">
         @csrf
         <div class="card">
@@ -35,28 +35,54 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <div class="form-group">
-                    <label class="form-label">Зависимость</label>
-                    <div class="row">
-                        <div class="col-md-4 mb-2">
-                            <select class="form-control select2 form-select">
-                                    <option value="0">Класс</option>
-                                </select>
-                        </div>
-                        <div class="col-md-4 mb-2">
-                            <select class="form-control select2 form-select">
-                                    <option value="0">Предмет</option>
-                                </select>
-                        </div>
-                        <div class="col-md-4 mb-2">
-                            <select class="form-control select2 form-select">
-                                    <option value="0">Тема</option>
-                                </select>
+            @if ($readonly)
+                <input type="hidden" name="class_id" value="{{ $topic->class_id }}">
+                <input type="hidden" name="subject_id" value="{{ $topic->subject_id }}">
+                <input type="hidden" name="topic_id" value="{{ $topic->id }}">
+            @else
+                @php
+                    // Группируем темы по class_id и subject_id
+                    $topicsGrouped = $topics->groupBy(fn($t) => $t->class_id . '-' . $t->subject_id);
+                @endphp
+                
+                <div class="card-footer">
+                    <div class="form-group">
+                        <label class="form-label">Зависимость</label>
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <select id="classSelect" class="form-control select2 form-select" >
+                                        <option value="">Выбирите класс</option>
+                                            @foreach($classes as $class)
+                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                            @endforeach
+                                    </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <select id="subjectSelect" class="form-control select2 form-select" disabled>
+                                        <option value="">Выбирите предмет</option>
+                                            @foreach($subjects as $subject)
+                                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                            @endforeach
+                                    </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <select id="topicSelect" class="form-control select2 form-select" disabled>
+                                        <option value="">Выбирите тему</option>
+                                            @foreach($topics as $topic)
+                                               <option 
+                                                    value="{{ $topic->id }}" 
+                                                    data-class="{{ $topic->class_id }}" 
+                                                    data-subject="{{ $topic->subject_id }}"
+                                                >
+                                                    {{ $topic->title }}
+                                                </option>
+                                            @endforeach
+                                    </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> 
+                </div> 
+            @endif
         </div>
 
         <div class="card">
@@ -370,6 +396,76 @@
                 input.name = input.name.replace(/\[answers]\[\d+]\[correct]/, `[answers][${index}][correct]`);
             }
         });
+    }
+
+    const classSelect = document.getElementById('classSelect');
+    const subjectSelect = document.getElementById('subjectSelect');
+    const topicSelect = document.getElementById('topicSelect');
+
+    classSelect.addEventListener('change', () => {
+        const classId = classSelect.value;
+
+        // Если класс не выбран
+        if (!classId) {
+            subjectSelect.disabled = true;
+            subjectSelect.value = '';
+
+            topicSelect.disabled = true;
+            topicSelect.value = '';
+            return;
+        }
+
+        subjectSelect.disabled = false;
+        subjectSelect.value = '';
+        topicSelect.disabled = true;
+        topicSelect.value = '';
+
+        filterTopics(); // очистка видимых тем
+    });
+
+    subjectSelect.addEventListener('change', () => {
+        const classId = classSelect.value;
+        const subjectId = subjectSelect.value;
+
+        // Если предмет не выбран
+        if (!subjectId) {
+            topicSelect.disabled = true;
+            topicSelect.value = '';
+            return;
+        }
+
+        if (classId && subjectId) {
+            topicSelect.disabled = false;
+            filterTopics();
+        } else {
+            topicSelect.disabled = true;
+            topicSelect.value = '';
+        }
+    });
+
+    function filterTopics() {
+        const classId = classSelect.value;
+        const subjectId = subjectSelect.value;
+
+        const options = topicSelect.querySelectorAll('option');
+
+        options.forEach(option => {
+            const topicClass = option.getAttribute('data-class');
+            const topicSubject = option.getAttribute('data-subject');
+
+            if (!topicClass || !topicSubject) {
+                option.style.display = 'block'; // Показываем placeholder
+                return;
+            }
+
+            if (topicClass === classId && topicSubject === subjectId) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        });
+
+        topicSelect.value = '';
     }
 </script>
 

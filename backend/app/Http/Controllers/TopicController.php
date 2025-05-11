@@ -10,9 +10,9 @@ use App\Models\Test;
 
 class TopicController extends Controller
 {
-    public function view($id)
+    public function view($topicId)
     {
-        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.questions'])->findOrFail($id);
+        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.questions'])->findOrFail($topicId);
         $hasTest = $topic->tests->isEmpty();
 
         //return view('admin.topic.view', compact('topic', 'hasTest'));
