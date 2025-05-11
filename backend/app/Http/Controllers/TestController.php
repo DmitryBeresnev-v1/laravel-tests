@@ -47,10 +47,10 @@ class TestController extends Controller
             'test_title' => 'required|string|max:255',
             'test_description' => 'nullable|string',
             'topic_id' => 'required|exists:topics,id',
-            'questions' => 'required|array|min:1',
-            'questions.*.text' => 'required|string',
-            'questions.*.answer_type' => 'required|in:single,multiple,text',
-            'questions.*.answers' => 'required|array',
+            // 'questions' => 'required|array|min:1',
+            // 'questions.*.text' => 'required|string',
+            // 'questions.*.answer_type' => 'required|in:single,multiple,text',
+            // 'questions.*.answers' => 'required|array',
         ]);
 
         // Создаем тест
@@ -64,18 +64,29 @@ class TestController extends Controller
             ]);
 
             //Создаем вопросы и ответы
-            foreach ($validated['questions'] as $questionData) {
+            foreach ($request->questions as $questionData) {
                 $question = Quest::create([
-                    'quest_id' => $test->id,
+                    'test_id' => $test->id,
                     'question' => $questionData['text'],
                     'type' => $questionData['answer_type'],                
                 ]);
 
-                foreach ($questionData['answers'] as $answer) {
+                foreach ($questionData['answers'] as $key=>$answer) {
+                    $is_correct = false;
+                    if ($questionData['answer_type']==0){
+                        if ($questionData['correct']==$key)
+                            $is_correct = true;
+                    } else if ($questionData['answer_type']==1)
+                    {
+                        $is_correct = isset($answer['correct']);
+                    } else
+                    {
+                        $is_correct = true;
+                    }
                     $answer = Answer::create([
                         'question_id' => $question->id,
                         'answer' => $answer['text'],
-                        'is_correct' => isset($answer['correct']), 
+                        'is_correct' => $is_correct, 
                     ]);
                 }
             }
