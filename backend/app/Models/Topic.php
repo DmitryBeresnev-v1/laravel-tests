@@ -15,7 +15,31 @@ class Topic extends Model
         'title',
         'description',
         'created_by',
-        'difficulty',
-        'average_time',
     ];
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function class()
+    {
+        return $this->belongsTo(School_class::class, 'class_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function quests()
+    {
+        return $this->hasMany(Quest::class);
+    }
+    
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
+    
 }

@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <form action="{{ route('topic.store')}}" method="POST">
+        <form action="{{ route('topic.store') }}" method="POST">
         @csrf 
             <div class="card">
                 <div class="card-header">

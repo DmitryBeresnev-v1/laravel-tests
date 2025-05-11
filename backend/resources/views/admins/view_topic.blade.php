@@ -20,7 +20,7 @@
                         <div class="tabs-menu-boxed">
                             <!-- Tabs -->
                             <ul class="nav panel-tabs fs-14">
-                                <li><a href="#activetabs" class="active" data-bs-toggle="tab">{title->name}</a></li>
+                                <li><a href="#activetabs" class="active" data-bs-toggle="tab">{{ $topic->title }}</a></li>
                                 <li><a href="#linktabs" data-bs-toggle="tab">Тест/ы</a></li>
                             </ul>
                         </div>
@@ -31,13 +31,12 @@
                                 <h5 class="card-title">Зависимость:</h5>
 
                                 <ol class="breadcrumb1"> 
-                                    <li class="breadcrumb-item1">{class->name}</li>
-                                    <li class="breadcrumb-item1">{subject->name}</li>
-                                    <li class="breadcrumb-item1">{topic->name}</li>
+                                    <li class="breadcrumb-item1">{{ $topic->class->name }}</li>
+                                    <li class="breadcrumb-item1">{{ $topic->subject->name }}</li>
+                                    <li class="breadcrumb-item1">{{ $topic->title }}</li>
                                 </ol>
                                 <h5 class="card-title">Содержание:</h5>
-                                <a>123</a>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                {!! $topic->description !!}
                                 <br>
                                 <div class="text-end">
                                     <a class="btn btn-primary" href="admin/test/id/update">Редактировать</a>
@@ -46,35 +45,41 @@
                             </div>
                             <div class="tab-pane" id="linktabs">
                                 <h5 class="card-title">Тесты к теме</h5>                                
-                                <div class="table-responsive">
-                                    <table class="table text-nowrap text-md-nowrap mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>№</th>
-                                                <th>Название</th>
-                                                <th>Автор</th>
-                                                <th>Вопросов</th>
-                                                <th class="align-middle text-center">Действия</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Закрепление темы</td>
-                                                <td>Иванов Иван Иванович</td>
-                                                <td>10</td>
-                                                <td class="text-center align-middle">
-                                                    <div class="btn-group align-top">
-                                                        <a class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</a> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                </div>
+                                    @if (!$hasTest)
+                                        <div class="table-responsive">
+                                            <table class="table text-nowrap text-md-nowrap mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>№</th>
+                                                        <th>Название</th>
+                                                        <th>Автор</th>
+                                                        <th>Вопросов</th>
+                                                        <th class="align-middle text-center">Действия</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($topic->tests->id as $item)
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>{{ $topic->tests->title }}</td>
+                                                            <td>{{ $topic->tests->created_by }}</td>
+                                                            <td>{{  $topic->tests->questions->count() }}</td>
+                                                            <td class="text-center align-middle">
+                                                                <div class="btn-group align-top">
+                                                                    <a class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</a> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                        </div>
+                                    @else
+                                        <p>Нет тестов по этой теме.</p>
+                                    @endif
                                 <div class="text-end">
-                                    <a class="btn btn-primary" href="/admin/test/create">
+                                    <a class="btn btn-primary" href="/admin/topic/{{ $topic->id }}/test/create">
                                         <i class="fe fe-plus me-2"></i>
                                         Создать
                                     </a>

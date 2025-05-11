@@ -6,13 +6,19 @@ use Illuminate\Http\Request; // Необходим для работы с Reques
 use App\Models\School_class;
 use App\Models\Subject;
 use App\Models\Topic;
+use App\Models\Test;
 
 class TopicController extends Controller
 {
     public function view($id)
     {
-        return view('admins.view_topic', ["id"=>$id]);
+        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.questions'])->findOrFail($id);
+        $hasTest = $topic->tests->isEmpty();
+
+        //return view('admin.topic.view', compact('topic', 'hasTest'));
+        return view('admins.view_topic', ["topic"=>$topic, 'hasTest'=>$hasTest]);
     }
+
     public function index()
     {
         return view('admins.user_topics');

@@ -24,12 +24,14 @@ Route::get('admin/topic', [TopicController::class,"index"]);                    
 Route::get('admin/topic/all', [AdminController::class,"index"]);                                //Вывод всех тем
 Route::get('admin/topic/{id}', [TopicController::class,"view"])->where('id','[0-9]+');          //Вывод конкретной темы
 
-Route::get('admin/topic/create', [TopicController::class,"create"]);        //Форма создания темы
-Route::get('admin/topic/edit', [TopicController::class,"edit"]);            //Форма изменения темы
-Route::post('admin/topic/store', [TopicController::class,"store"])->name('topic.store');         //Запись БД
-Route::post('admin/topic/{id}/update', [TopicController::class,"update"]);  //Изменения БД
-Route::get('admin/topic/{id}/delete', [TopicController::class,"destroy"]);  //Удаление БД
+Route::get('admin/topic/create', [TopicController::class,"create"]);                            //Форма создания темы
+Route::get('admin/topic/edit', [TopicController::class,"edit"]);                                //Форма изменения темы
+Route::post('admin/topic/store', [TopicController::class,"store"])->name('topic.store');        //Запись БД
+Route::post('admin/topic/{id}/update', [TopicController::class,"update"]);                      //Изменения БД
+Route::get('admin/topic/{id}/delete', [TopicController::class,"destroy"]);                      //Удаление БД
 
+Route::get('admin/topic/{id}/test/create', [TestController::class,"create"]);
+//Route::get('admin/topic/{id}/test/{id}', [TopicController::class,"view"]);
 
 Route::get('admin/test', [TestController::class,"index"]);                  //Вывод всех тестов клиенту
 Route::get('admin/test/create', [TestController::class,"create"]);          //Форма создания теста
