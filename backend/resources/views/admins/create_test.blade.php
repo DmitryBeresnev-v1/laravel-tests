@@ -44,7 +44,7 @@
                     // Группируем темы по class_id и subject_id
                     $topicsGrouped = $topics->groupBy(fn($t) => $t->class_id . '-' . $t->subject_id);
                 @endphp
-                
+
                 <div class="card-footer">
                     <div class="form-group">
                         <label class="form-label">Зависимость</label>
@@ -66,14 +66,13 @@
                                     </select>
                             </div>
                             <div class="col-md-4 mb-2">
-                                <select id="topicSelect" class="form-control select2 form-select" disabled>
+                                <select name="topic_id" id="topicSelect" class="form-control select2 form-select" disabled>
                                         <option value="">Выбирите тему</option>
                                             @foreach($topics as $topic)
                                                <option 
                                                     value="{{ $topic->id }}" 
                                                     data-class="{{ $topic->class_id }}" 
-                                                    data-subject="{{ $topic->subject_id }}"
-                                                >
+                                                    data-subject="{{ $topic->subject_id }}">
                                                     {{ $topic->title }}
                                                 </option>
                                             @endforeach

@@ -13,11 +13,17 @@ class Quest extends Model
 
     protected $fillable = [
         'question',
-        'topic_id',
+        'test_id',
+        'type',
     ];
     
     public function test()
     {
         return $this->belongsTo(Test::class);
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 }

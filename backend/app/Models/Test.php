@@ -13,11 +13,12 @@ class Test extends Model
         'topic_id',
         'title',
         'description',
+        'created_by',
     ];
 
-    public function questions()
+    public function quest()
     {
-        return $this->hasMany(Question::class, 'test_id');
+        return $this->hasMany(Quest::class, 'test_id');
     }
     
     public function topic()
