@@ -39,6 +39,7 @@
                 <input type="hidden" name="class_id" value="{{ $topic->class_id }}">
                 <input type="hidden" name="subject_id" value="{{ $topic->subject_id }}">
                 <input type="hidden" name="topic_id" value="{{ $topic->id }}">
+                <input type="hidden" name="route_topic" value="{{ $readonly }}">
             @else
                 @php
                     // Группируем темы по class_id и subject_id

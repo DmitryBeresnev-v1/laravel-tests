@@ -58,12 +58,12 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($topic->tests->id as $item)
+                                                    @foreach ($topic->tests as $test)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>{{ $topic->tests->title }}</td>
-                                                            <td>{{ $topic->tests->created_by }}</td>
-                                                            <td>{{  $topic->tests->questions->count() }}</td>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ $test->title }}</td>
+                                                            <td>{{ $test->createdBy->name }}</td>
+                                                            <td>{{ $test->quest->count() }}</td>
                                                             <td class="text-center align-middle">
                                                                 <div class="btn-group align-top">
                                                                     <a class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</a> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>

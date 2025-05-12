@@ -12,10 +12,9 @@ class TopicController extends Controller
 {
     public function view($topicId)
     {
-        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.questions'])->findOrFail($topicId);
+        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.quest'])->findOrFail($topicId);
         $hasTest = $topic->tests->isEmpty();
 
-        //return view('admin.topic.view', compact('topic', 'hasTest'));
         return view('admins.view_topic', ["topic"=>$topic, 'hasTest'=>$hasTest]);
     }
 
@@ -43,7 +42,7 @@ class TopicController extends Controller
             'topic_description' => 'required',
         ]);
 
-       Topic::create([
+       $topicId = Topic::create([
            'title' => $validated['topic_name'],
            'description' => $validated['topic_description'],
            'class_id' => $validated['class_select'],
@@ -54,7 +53,8 @@ class TopicController extends Controller
            
        ]);
        
-       return redirect()->back()->with('success', 'Record inserted successfully');
+       return redirect('/admin/topic/' . $topicId -> id);
+    //    return redirect()->back()->with('success', 'Record inserted successfully');
   
     }
 

@@ -73,11 +73,13 @@ class TestController extends Controller
 
                 foreach ($questionData['answers'] as $key=>$answer) {
                     $is_correct = false;
-                    if ($questionData['answer_type']==0){
-                        if ($questionData['correct']==$key)
+                    
+                    if ($questionData['answer_type']==0)
+                    {   
+                        if ($questionData['correct']==$key) 
                             $is_correct = true;
                     } else if ($questionData['answer_type']==1)
-                    {
+                    {   
                         $is_correct = isset($answer['correct']);
                     } else
                     {
@@ -91,7 +93,10 @@ class TestController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->back()->with('success', 'Record inserted successfully');
+                if ($request->route_topic){
+                    return redirect('/admin/topic/' . $validated['topic_id']);
+                }
+                return redirect()->back()->with('success', 'Record inserted successfully');
         }
         catch (\Throwable $th) {
             DB::rollBack();
