@@ -62,7 +62,7 @@
                                                         <tr>
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $test->title }}</td>
-                                                            <td>{{ $test->createdBy->name }}</td>
+                                                            <td>{{ $test->user->name }}</td>
                                                             <td>{{ $test->quest->count() }}</td>
                                                             <td class="text-center align-middle">
                                                                 <div class="btn-group align-top">

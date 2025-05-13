@@ -50,4 +50,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(Topic::class, 'created_by');
     }
+    
+    public function subject()
+    {
+        return $this->hasMany(Subject::class);
+    }
+
+    public function class()
+    {
+        return $this->hasMany(School_class::class);
+    }
+
+    public function quests()
+    {
+        return $this->hasMany(Quest::class);
+    }
+    
+    public function tests()
+    {
+        return $this->hasMany(Test::class, 'created_by');
+    }
 }

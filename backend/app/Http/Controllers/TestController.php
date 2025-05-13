@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\School_class;
@@ -60,7 +61,7 @@ class TestController extends Controller
                 'title' => $validated['test_title'],
                 'description' => $validated['test_description'] ?? null,
                 'topic_id' => $validated['topic_id'],
-                'created_by' => '1',
+                'created_by' => Auth::user()->id,
             ]);
 
             //Создаем вопросы и ответы

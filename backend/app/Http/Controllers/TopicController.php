@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request; // Необходим для работы с Request
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\School_class;
 use App\Models\Subject;
 use App\Models\Topic;
 use App\Models\Test;
+use App\Models\User;
 
 class TopicController extends Controller
 {
-    public function index()
-    {
-        return view('admins.user_topics');
+    public function index(Request $request)
+    {   
+        $user = User::with(['topics', 'tests', 'tests.quest'])->find(Auth::user()->id);
+
+        return view('admins.user_topics', ['user' =>$user]);
     }
 
     /* Show the form for creating a new resource. */
     public function create()
     {
-        $class=School_class::all();
-        $subject=Subject::all();
-        return view('admins.create_topic', ["class"=>$class, "subject"=>$subject]);
+        $class = School_class::all();
+        $subject = Subject::all();
+        return view('admins.create_topic', ["class" => $class, "subject" => $subject]);
     }
 
     /* Store a newly created resource in storage. */
@@ -41,7 +45,7 @@ class TopicController extends Controller
            'subject_id' => $validated['subject_select'],
         //    'average_time' => 0;
         //    'difficulty' => 0;
-           'created_by' => '1', //Auth::user()->id,
+           'created_by' => Auth::user()->id,
            
        ]);
        

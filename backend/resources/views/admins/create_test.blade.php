@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form method="POST" action="/admin/test/store">
+    <form method="POST" action="{{ route('test.store') }}">
         @csrf
         <div class="card">
             <div class="card-header">

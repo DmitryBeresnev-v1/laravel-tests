@@ -36,18 +36,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Тема</td>
-                                    <td>Да</td>
-                                    <td><span>09 Dec 2017</span></td>
+                                @foreach ($user->topics as $topic)
+                                    <tr>
+                                        <td>{{ $topic->class->class_number}}</td>
+                                        <td>{{ $topic->title}}</td>
+                                        <td> ---
+                                        </td>
+                                        <td><span>{{ $topic->created_at}}</span></td>
 
-                                    <td class="text-center align-middle">
-                                        <div class="btn-group align-top">
-                                            <button class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Подробнее</button> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <td class="text-center align-middle">
+                                            <div class="btn-group align-top">
+                                                <a href="/admin/topic/{{ $topic->id }}" class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Подробнее</a> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

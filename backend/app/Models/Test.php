@@ -28,11 +28,6 @@ class Test extends Model
 
     public function user()
     {
-        return $this->topic->user();
-    }
-
-    public function createdBy()
-    {
         return $this->belongsTo(User::class, 'created_by');
     }
 }
