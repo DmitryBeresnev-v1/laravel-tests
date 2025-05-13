@@ -14,7 +14,7 @@ class LoginController extends Controller
             return redirect('/admin/topic/all');
         }
         return view ('auntification.login');
-        }
+    }
 
     public function login(Request $request){        
         if(Auth::attempt(['login'=>$request->login,'password'=>$request->password]))

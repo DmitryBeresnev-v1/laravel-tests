@@ -36,34 +36,17 @@
                                     <th class="wd-15p border-bottom-0">Дата создания</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                
+                            <tbody>                                
                                  @foreach ($topic as $index)
                                     <tr>
+                                        <td>{{ $index->class->class_number}}</td>
+                                        <td>{{ $index->subject->name}}</td>
                                         <td>{{ $index->title}}</td>
-                                        <td>{{ $index->title}}</td>
-                                        <td> 
-                                            @if ($index->tests != null)
-                                                @foreach ($index->tests as $test)
-                                                                                            @endforeach
-                                            @endif
-                                        </td>
-                                        <td><span>{{ $index->created_at->locale('ru')->timezone('Europe/Moscow')->format('d/m/Y - H:i')}}</span></td>
-
-                                        
+                                        <td>{{ $index->tests !== null ? 'Есть' : 'Нет' }}</td>
+                                        <td>{{ $index->user->name}}</td>
+                                        <td><span>{{ $index->created_at->locale('ru')->timezone('Europe/Moscow')->format('d/m/Y - H:i')}}</span></td>                                        
                                     </tr>
                                 @endforeach
-                            
-                                
-                                <tr>
-                                    <td>6</td>
-                                    <td>Физика</td>
-                                    <td>Оптика</td>
-                                    <td>Есть</td>
-                                    <td>Иванов Иван Иванович</td>
-                                    <td><span>09 Dec 2017</span></td>
-                                </tr>
-
                             </tbody>
                         </table>
                     </div>
