@@ -6,49 +6,82 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\LoginController;
+
+//use App\Http\Middleware\Superadmin;
 
 Route::get('/', function () {
     return view('welcome');
 });
 //Клиентская часть
 Route::get('/dashboard', [DashboardController::class,"view"]);
-Route::get('/{name}', [SubjectController::class,"view"]);
+//Route::get('/{name}', [SubjectController::class,"view"]);
 
-
-//Админская чать
 //Только залогиненные могут иметь возможность работать с темами и тестами
-Route::get('/admin', [AdminController::class,"view"]);
+// Route::prefix('auth') -> controller(LoginController::class)
+//     -> group(function () {
+//             Route::get('/login', 'index')->name('sign_in');
+//             Route::post('/login', 'login');
+//             Route::get('/signout', 'signout');
+// });
 
+Route::prefix('admin') 
+    //-> middleware(['auth'])
+    -> group(function () {
 
-Route::get('admin/topic', [TopicController::class,"index"]);                                    //Вывод всех тем клиента
-Route::get('admin/topic/all', [AdminController::class,"index"]);                                //Вывод всех тем
-Route::get('admin/topic/{topicId}', [TopicController::class,"view"])->where('topicId','[0-9]+');          //Вывод конкретной темы
+        Route::prefix('topic') -> controller(TopicController::class) -> whereNumber('topicId')
+            -> group(function () {
+                    Route::get('/', 'index');                               //Вывод всех тем клиента
+                    Route::get('/all', [AdminController::class, 'index']);  //Вывод всех тем
+                    Route::get('/{topicId}', 'show');                       //Вывод конкретной темы 
 
-Route::get('admin/topic/create', [TopicController::class,"create"]);                            //Форма создания темы
-Route::get('admin/topic/edit', [TopicController::class,"edit"]);                                //Форма изменения темы
-Route::post('admin/topic/store', [TopicController::class,"store"])->name('topic.store');        //Запись БД
-Route::post('admin/topic/{topicId}/update', [TopicController::class,"update"]);                      //Изменения БД
-Route::get('admin/topic/{topicId}/delete', [TopicController::class,"destroy"]);                      //Удаление БД
+                    Route::get('/create', 'create');                                                 //Форма создания темы
+                    Route::get('/{topicId}/test/create', [TestController::class, 'create']);         //Форма создания теста из темы
+                    Route::get('/{topicId}/edit', 'edit');                                           //Форма изменения темы
 
-Route::get('admin/topic/{topicId}/test/create', [TestController::class,"create"]);
-//Route::get('admin/topic/{id}/test/{id}', [TopicController::class,"view"]);
+                    Route::post('/', 'store')->name('topic.store');         //Запись БД
+                    Route::put('/{topicId}', 'update');                     //Изменения БД
+                    Route::delete('/{topicId}/delete', 'destroy');          //Удаление БД
+        });
 
-Route::get('admin/test', [TestController::class,"index"]);                  //Вывод всех тестов клиенту
-Route::get('admin/test/create', [TestController::class,"create"]);          //Форма создания теста
-Route::get('admin/test/edit', [TestController::class,"edit"]);              //Форма изменения теста
-Route::post('admin/test/store', [TestController::class,"store"]);           //Запись БД
-Route::post('admin/test/{testId}/update', [TestController::class,"update"]);    //Изменения БД
-Route::get('admin/test/{testId}/delete', [TestController::class,"destroy"]);    //Удаление БД
+        Route::prefix('test') -> controller(TestController::class) -> whereNumber('testId')
+            -> group(function () {
+                    Route::get('/', 'index');                          //Вывод всех тестов клиенту
+                    // Route::get('/{testId}', 'show');
+                    Route::get('/create', 'create');                   //Форма создания теста
+                    Route::get('/{testId}/edit', 'edit');              //Форма изменения теста
 
+                    Route::post('/', 'store')->name('test.store');     //Запись БД
+                    Route::put('/{testId}', 'update');                 //Изменения БД
+                    Route::delete('/{testId}/delete', 'destroy');      //Удаление БД
+        });
 
-//Только администратор должен иметь возможность создавать предметы/разделы
-Route::get('admin/subject', [SubjectController::class,"index"]);                  //Вывод всех предметов/разделов клиенту
-Route::get('admin/subject/create', [SubjectController::class,"create"]);          //Форма создания предметов/разделов
-Route::get('admin/subject/edit', [SubjectController::class,"edit"]);              //Форма изменения предмета/раздела
-Route::post('admin/subject/store', [SubjectController::class,"store"])->name('subject.store');           //Запись БД
-Route::post('admin/subject/{id}/update', [SubjectController::class,"update"]);    //Изменения БД
-Route::get('admin/subject/{id}/delete', [SubjectController::class,"destroy"]);    //Удаление БД
+        // Только администратор имеет возможность создавать предмет
+        Route::prefix('subject') -> controller(SubjectController::class) -> whereNumber('subjectId')
+            //-> middleware(['admin'])
+            -> group(function () {
+                    Route::get('/', 'index');                          //Вывод всех предметов/разделов клиенту
+                    // Route::get('/{subjectId}', 'show');
+                    Route::get('/create', 'create');                   //Форма создания предметов/разделов
+                    Route::get('/{subjectId}/edit', 'edit');           //Форма изменения предмета/раздела
 
+                    Route::post('/', 'store')->name('subject.store');  //Запись БД
+                    Route::put('/{subjectId}', 'update');              //Изменения БД
+                    Route::delete('/{subjectId}/delete', 'destroy');   //Удаление БД
+        });
+});
 
-//Создания визуала без функционала
-//Route::get('admin/topic/view', [TopicController::class,"view"]);
+/*  -- Шпаргалка --
+
+-> Маршрут
+Route::get('your/path/here/{id}', 'function_name')->where('id','[0-9]+')->name('your.route.name');
+
+-> Html переходы
+href="/admin/topic" - переход по строгому пути ip:port/admin -> ip:port/admin/topic
+href="admin/topic" - переход с добавлением ip:port/admin -> ip:port/admin/admin/topic
+href="{{ route('your.route.name') }}" - переход по указанному имени маршрута 
+
+-> Html формы
+<form action="{{ route('your.route.name') }}" method="POST"> @csrf - для формы создания
+<form action="{{ route('your.route.name') }}" method="POST"> @csrf @method('PUT/DELETE') - для формы изменения/удаления
+*/

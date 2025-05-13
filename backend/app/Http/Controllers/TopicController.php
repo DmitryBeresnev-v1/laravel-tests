@@ -10,14 +10,6 @@ use App\Models\Test;
 
 class TopicController extends Controller
 {
-    public function view($topicId)
-    {
-        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.quest'])->findOrFail($topicId);
-        $hasTest = $topic->tests->isEmpty();
-
-        return view('admins.view_topic', ["topic"=>$topic, 'hasTest'=>$hasTest]);
-    }
-
     public function index()
     {
         return view('admins.user_topics');
@@ -59,9 +51,12 @@ class TopicController extends Controller
     }
 
     /* Display the specified resource. */
-    public function show(string $id)
+    public function show($topicId)
     {
-        //
+        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.quest'])->findOrFail($topicId);
+        $hasTest = $topic->tests->isEmpty();
+
+        return view('admins.view_topic', ["topic"=>$topic, 'hasTest'=>$hasTest]);
     }
 
     /* Show the form for editing the specified resource. */
