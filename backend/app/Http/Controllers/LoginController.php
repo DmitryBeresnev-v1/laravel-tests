@@ -11,11 +11,10 @@ class LoginController extends Controller
     public function index(){
         if(Auth::check())
         {
-            dd('complite');
-            //return redirect('/admin/topic/all');
+            return redirect('/admin/topic/all');
         }
-        //return redirect()->route('sign_in');   
-    }
+        return view ('auntification.login');
+        }
 
     public function login(Request $request){        
         if(Auth::attempt(['login'=>$request->login,'password'=>$request->password]))
@@ -28,6 +27,6 @@ class LoginController extends Controller
     public function signout ()
     {
         Auth::logout();
-        //return redirect()->route('sign_in');
+        return redirect()->route('login');
     }
 }

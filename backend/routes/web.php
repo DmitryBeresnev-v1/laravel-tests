@@ -18,17 +18,16 @@ Route::get('/dashboard', [DashboardController::class,"view"]);
 //Route::get('/{name}', [SubjectController::class,"view"]);
 
 //Только залогиненные могут иметь возможность работать с темами и тестами
-// Route::prefix('auth') -> controller(LoginController::class)
-//     -> group(function () {
-//             Route::get('/login', 'index')->name('sign_in');
-//             Route::post('/login', 'login');
-//             Route::get('/signout', 'signout');
-// });
+Route::prefix('auth') -> controller(LoginController::class)
+    -> group(function () {
+            Route::get('/login', 'index') -> name('login');
+            Route::post('/login', 'login');
+            Route::get('/signout', 'signout') -> name('signout');
+});
 
 Route::prefix('admin') 
-    //-> middleware(['auth'])
+    -> middleware(['auth'])
     -> group(function () {
-
         Route::prefix('topic') -> controller(TopicController::class) -> whereNumber('topicId')
             -> group(function () {
                     Route::get('/', 'index');                               //Вывод всех тем клиента
