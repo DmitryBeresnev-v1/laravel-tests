@@ -37,6 +37,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
+                                 @foreach ($topic as $index)
+                                    <tr>
+                                        <td>{{ $index->title}}</td>
+                                        <td>{{ $index->title}}</td>
+                                        <td> 
+                                            @if ($index->tests != null)
+                                                @foreach ($index->tests as $test)
+                                                                                            @endforeach
+                                            @endif
+                                        </td>
+                                        <td><span>{{ $index->created_at->locale('ru')->timezone('Europe/Moscow')->format('d/m/Y - H:i')}}</span></td>
+
+                                        
+                                    </tr>
+                                @endforeach
+                            
+                                
                                 <tr>
                                     <td>6</td>
                                     <td>Физика</td>
@@ -45,6 +63,7 @@
                                     <td>Иванов Иван Иванович</td>
                                     <td><span>09 Dec 2017</span></td>
                                 </tr>
+
                             </tbody>
                         </table>
                     </div>

@@ -40,9 +40,13 @@
                                     <tr>
                                         <td>{{ $topic->class->class_number}}</td>
                                         <td>{{ $topic->title}}</td>
-                                        <td> ---
+                                        <td> 
+                                            @if ($topic->tests != null)
+                                                @foreach ($topic->tests as $test)
+                                                   {{$test->title}} <br>                                                @endforeach
+                                            @endif
                                         </td>
-                                        <td><span>{{ $topic->created_at}}</span></td>
+                                        <td><span>{{ $topic->created_at->locale('ru')->timezone('Europe/Moscow')->format('d/m/Y - H:i')}}</span></td>
 
                                         <td class="text-center align-middle">
                                             <div class="btn-group align-top">
