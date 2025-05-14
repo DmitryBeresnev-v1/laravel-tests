@@ -40,48 +40,18 @@
 </head>
 
 <body class="app sidebar-mini ltr">
-
-    <!-- GLOBAL-LOADER -->
-    <div id="global-loader">
-        <img src="{{asset('assets/images/loader.svg')}}" class="loader-img" alt="Loader">
-    </div>
-    <!-- /GLOBAL-LOADER -->
-
-    <!-- PAGE -->
-    <div class="page">
-        <div class="page-main">
-
-
                 @include('layouts.topmenu')
-                @include('layouts.leftmenu')
+                @include('layouts.leftmenu')    
+    <!-- PAGE -->
 
-            
-           
-
-            <!--app-content open-->
-            <div class="main-content app-content mt-0">
-                <div class="side-app">
-
-                    @yield('content')
-
-                </div>
+    <div class="main-content app-content mt-0">
+        <div class="side-app">
+            <div class="main-container container-fluid">
+                @yield('content')
             </div>
-            <!--app-content closed-->
         </div>
-
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-md-12 col-sm-12 text-center">
-                        Copyright © <span id="year"></span>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- FOOTER CLOSED -->
     </div>
+
 
     <!-- BACK-TO-TOP -->
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>

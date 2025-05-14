@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <form action="{{ route('topic.store') }}" method="POST">
+        <form class="needs-validation" action="{{ route('topic.store') }}" method="POST" novalidate>
         @csrf 
             <div class="card">
                 <div class="card-header">
@@ -22,32 +22,33 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                            <div class="form-group">
-                                <label class="form-label">Наименование темы</label>
-                                <input type="text" class="form-control" id="Inputname" name="topic_name" placeholder="Тема">
-                            </div>
-
-
+                        <div class="form-group">
+                            <label class="form-label">Наименование темы</label>
+                            <input type="text" class="form-control" name="topic_name" placeholder="Тема" required>
+                            <div class="invalid-feedback">Пожалуйста введите наименование темы.</div>                               
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xl-8">
                                 <label class="form-label">Предмет/дисциплина</label>
-                                <select name="subject_select" class="form-control select2 form-select">
-                                        <option value="0">Выбирите предмет</option>
-                                        @foreach ($subject as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
+                                <select name="subject_select" class="form-control select2 form-select" required>
+                                    <option selected disabled value="">Выбирите предмет</option>
+                                    @foreach ($subject as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">Пожалуйста выберите предмет или дисциплину.</div>
                             </div>
                             <div class="col-md-4 mb-2">
                                 <label class="form-label">Класс</label>
-                                <select name="class_select" class="form-control select2 form-select">
-                                        <option value="0">Выбирите класс</option>
-                                        @foreach ($class as $item)
-                                            <option value="{{$item->class_number}}">{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
+                                <select name="class_select" class="form-control select2 form-select" required>
+                                    <option selected disabled value="">Выбирите класс</option>
+                                    @foreach ($class as $item)
+                                        <option value="{{$item->class_number}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-feedback">Пожалуйста выберите класс.</div>
                             </div>
                         </div>
                     </div>
@@ -65,13 +66,20 @@
             </div>
         </form>
     </div>
-            
- 
 
 @endsection
 
 @section('scripts')
-    <!-- INTERNAL WYSIWYG Editor JS -->
+
+        <!-- INTERNAL WYSIWYG Editor JS -->
     <script src="{{asset('assets/plugins/wysiwyag/jquery.richtext.js')}}"></script>
-    <script src="{{asset('assets/plugins/wysiwyag/wysiwyag.js')}}"></script>    
+    <script src="{{asset('assets/plugins/wysiwyag/wysiwyag.js')}}"></script> 
+    <!-- SELECT2 JS -->
+    <script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
+
+    <!-- FORMVALIDATION JS -->
+    <script src="{{ asset('assets/js/form-validation.js') }}"></script>
+
+    <!-- CUSTOM JS -->
+    <!-- <script src="{{ asset('assets/js/custom.js') }}"></script> -->
 @endsection

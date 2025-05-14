@@ -14,30 +14,39 @@
     </div>
 
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ $topic->title }}</h3>
+            </div>
+            
             <div class="card-body">
                 <div class="panel panel-primary">
                     <div class="tab-menu-heading tab-menu-heading-boxed">
                         <div class="tabs-menu-boxed">
                             <!-- Tabs -->
                             <ul class="nav panel-tabs fs-14">
-                                <li><a href="#activetabs" class="active" data-bs-toggle="tab">{{ $topic->title }}</a></li>
+                                <li><a href="#activetabs" class="active" data-bs-toggle="tab">Информация о теме</a></li>
                                 <li><a href="#linktabs" data-bs-toggle="tab">Тест/ы</a></li>
                             </ul>
                         </div>
                     </div>
+                    
                     <div class="panel-body tabs-menu-body">
                         <div class="tab-content">
                             <div class="tab-pane active" id="activetabs">
+                                
                                 <h5 class="card-title">Зависимость:</h5>
-
-                                <ol class="breadcrumb1"> 
-                                    <li class="breadcrumb-item1">{{ $topic->class->name }}</li>
-                                    <li class="breadcrumb-item1">{{ $topic->subject->name }}</li>
-                                    <li class="breadcrumb-item1">{{ $topic->title }}</li>
-                                </ol>
+                                
+                                <div class="breadcrumb-style2">
+                                    <ol class="breadcrumb1"> 
+                                        <li class="breadcrumb-item1">{{ $topic->class->name }}</li>
+                                        <li class="breadcrumb-item1">{{ $topic->subject->name }}</li>
+                                        <li class="breadcrumb-item1">{{ $topic->title }}</li>
+                                    </ol>
+                                </div>
                                 <h5 class="card-title">Содержание:</h5>
-                                {!! $topic->description !!}
-                                <br>
+                                    <div class="example mb-5">
+                                        {!! $topic->description !!}
+                                    </div>
                                 <div class="text-end">
                                     <a class="btn btn-primary" href="admin/test/id/update">Редактировать</a>
                                 </div>
@@ -46,7 +55,7 @@
                             <div class="tab-pane" id="linktabs">
                                 <h5 class="card-title">Тесты к теме</h5>                                
                                     @if (!$hasTest)
-                                        <div class="table-responsive">
+                                        <div class="table-responsive mb-5">
                                             <table class="table text-nowrap text-md-nowrap mb-0">
                                                 <thead>
                                                     <tr>
@@ -73,7 +82,6 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                            <br>
                                         </div>
                                     @else
                                         <p>Нет тестов по этой теме.</p>

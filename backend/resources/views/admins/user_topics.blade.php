@@ -15,7 +15,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Созданно тем: {valume}</h3>
+                    <h3 class="card-title">Созданные темы</h3>
                     <div class="page-options ms-auto">
                         <a class="btn btn-primary" href="/admin/topic/create">
                             <i class="fe fe-plus me-2"></i>

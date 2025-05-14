@@ -15,7 +15,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Созданно тем: {valume}</h3>
+                    <h3 class="card-title">Список тем</h3>
                     <div class="page-options ms-auto">
                         <a class="btn btn-primary" href="/admin/topic/create">
                             <i class="fe fe-plus me-2"></i>
@@ -39,12 +39,12 @@
                             <tbody>                                
                                  @foreach ($topic as $index)
                                     <tr>
-                                        <td>{{ $index->class->class_number}}</td>
-                                        <td>{{ $index->subject->name}}</td>
-                                        <td>{{ $index->title}}</td>
-                                        <td>{{ $index->tests !== null ? 'Есть' : 'Нет' }}</td>
-                                        <td>{{ $index->user->name}}</td>
-                                        <td><span>{{ $index->created_at->locale('ru')->timezone('Europe/Moscow')->format('d/m/Y - H:i')}}</span></td>                                        
+                                        <td>{{ $index->class->class_number }}</td>
+                                        <td>{{ $index->subject->name }}</td>
+                                        <td>{{ $index->title }}</td>
+                                        <td>{{ $index->tests->isNotEmpty() ? 'Есть' : 'Нету' }} </td>
+                                        <td>{{ $index->user->name }}</td>
+                                        <td><span>{{ $index->created_at->locale('ru')->timezone('Europe/Moscow')->format('d/m/Y - H:i') }}</span></td>                                        
                                     </tr>
                                 @endforeach
                             </tbody>

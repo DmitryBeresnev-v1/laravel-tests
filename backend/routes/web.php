@@ -8,6 +8,8 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\LoginController;
 
+use App\Http\Controllers\ClassesController;
+
 //use App\Http\Middleware\Superadmin;
 
 Route::get('/', function () {
@@ -16,6 +18,8 @@ Route::get('/', function () {
 //Клиентская часть
 Route::get('/dashboard', [DashboardController::class,"view"]);
 //Route::get('/{name}', [SubjectController::class,"view"]);
+
+Route::get('/test', [ClassesController::class,"test"]);
 
 //Только залогиненные могут иметь возможность работать с темами и тестами
 Route::prefix('auth') -> controller(LoginController::class)
@@ -74,6 +78,7 @@ Route::prefix('admin')
 
 -> Маршрут
 Route::get('your/path/here/{id}', 'function_name')->where('id','[0-9]+')->name('your.route.name');
+Route::resources('your/path/here/', YourController::class); - автоматически генерирует сразу все CRUD 
 
 -> Html переходы
 href="/admin/topic" - переход по строгому пути ip:port/admin -> ip:port/admin/topic
