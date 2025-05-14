@@ -30,9 +30,9 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-xl-8">
+                            <div class="col-md-8">
                                 <label class="form-label">Предмет/дисциплина</label>
-                                <select name="subject_select" class="form-control select2 form-select" required>
+                                <select name="subject_select" class="form-control form-select" required>
                                     <option selected disabled value="">Выбирите предмет</option>
                                     @foreach ($subject as $item)
                                         <option value="{{$item->id}}">{{$item->name}}</option>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-md-4 mb-2">
                                 <label class="form-label">Класс</label>
-                                <select name="class_select" class="form-control select2 form-select" required>
+                                <select name="class_select" class="form-control form-select" required>
                                     <option selected disabled value="">Выбирите класс</option>
                                     @foreach ($class as $item)
                                         <option value="{{$item->class_number}}">{{$item->name}}</option>
