@@ -213,7 +213,7 @@
         <!-- FORMVALIDATION JS -->
     <script src="{{ asset('assets/js/form-validation-my.js') }}"></script>
 
-<script>
+    <script>
     let questionId = 2; // Начинаем с 2, т.к. первый вопрос уже есть
     let questionToDelete = null;
 
