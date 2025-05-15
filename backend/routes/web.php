@@ -35,7 +35,7 @@ Route::prefix('admin')
         Route::prefix('topic') -> controller(TopicController::class) -> whereNumber('topicId')
             -> group(function () {
                     Route::get('/', 'index');                               //Вывод всех тем клиента
-                    Route::get('/all', [AdminController::class, 'show']);  //Вывод всех тем
+                    Route::get('/all', [AdminController::class, 'show']);   //Вывод всех тем
                     Route::get('/{topicId}', 'show');                       //Вывод конкретной темы 
 
                     Route::get('/create', 'create');                                                 //Форма создания темы
