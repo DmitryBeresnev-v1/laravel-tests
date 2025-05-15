@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form method="POST" action="{{ route('test.store') }}">
+    <form action="{{ route('test.store') }}" method="POST">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -25,7 +25,8 @@
                 <div class="row mb-4">
                     <label class="col-md-3 form-label">Название теста :</label>
                     <div class="col-md-9">
-                        <input type="text" name="test_title" class="form-control" placeholder="Итоговый тест">
+                        <input type="text" name="test_title" class="form-control" placeholder="Итоговый тест" required>
+                        <div class="invalid-feedback">Пожалуйста введите наименование теста.</div>
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -51,33 +52,36 @@
                         <label class="form-label">Зависимость</label>
                         <div class="row">
                             <div class="col-md-4 mb-2">
-                                <select id="classSelect" class="form-control select2 form-select" >
-                                        <option value="">Выбирите класс</option>
-                                            @foreach($classes as $class)
-                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                            @endforeach
-                                    </select>
+                                <select id="classSelect" class="form-control form-select" required>
+                                    <option selected disabled value="">Выбирите класс</option>
+                                        @foreach($classes as $class)
+                                            <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                        @endforeach
+                                </select>
+                                <div class="invalid-feedback">Пожалуйста выбирите класс.</div>
                             </div>
                             <div class="col-md-4 mb-2">
-                                <select id="subjectSelect" class="form-control select2 form-select" disabled>
-                                        <option value="">Выбирите предмет</option>
-                                            @foreach($subjects as $subject)
-                                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                            @endforeach
-                                    </select>
+                                <select id="subjectSelect" class="form-control form-select" disabled required>
+                                    <option selected disabled value="">Выбирите предмет/дисциплину</option>
+                                        @foreach($subjects as $subject)
+                                            <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                        @endforeach
+                                </select>
+                                <div class="invalid-feedback">Пожалуйста выбирите предмет/дициплину.</div>
                             </div>
                             <div class="col-md-4 mb-2">
-                                <select name="topic_id" id="topicSelect" class="form-control select2 form-select" disabled>
-                                        <option value="">Выбирите тему</option>
-                                            @foreach($topics as $topic)
-                                               <option 
-                                                    value="{{ $topic->id }}" 
-                                                    data-class="{{ $topic->class_id }}" 
-                                                    data-subject="{{ $topic->subject_id }}">
-                                                    {{ $topic->title }}
-                                                </option>
-                                            @endforeach
-                                    </select>
+                                <select name="topic_id" id="topicSelect" class="form-control form-select" disabled required>
+                                    <option selected disabled value="">Выбирите тему</option>
+                                        @foreach($topics as $topic)
+                                            <option 
+                                                value="{{ $topic->id }}" 
+                                                data-class="{{ $topic->class_id }}" 
+                                                data-subject="{{ $topic->subject_id }}">
+                                                {{ $topic->title }}
+                                            </option>
+                                        @endforeach
+                                </select>
+                                <div class="invalid-feedback">Пожалуйста выбирите тему.</div>
                             </div>
                         </div>
                     </div>
@@ -107,7 +111,8 @@
                             <div class="row mb-4">
                                 <label class="col-md-3 form-label">Вопрос :</label>
                                 <div class="col-md-9">
-                                    <input type="text" name="questions[1][text]" class="form-control" placeholder="Вопрос">
+                                    <input type="text" name="questions[1][text]" class="form-control" placeholder="Вопрос" required>
+                                    <div class="invalid-feedback">Пожалуйста введите вопрос.</div>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -127,10 +132,10 @@
                                         <!-- Ответы по умолчанию (4 шт.) -->
                                         <div class="d-flex justify-content-between align-items-center mt-3">
                                             <label class="custom-control custom-radio-md me-2">
-                                                <input type="radio" class="custom-control-input" name="questions[1][correct]" value="0">
+                                                <input type="radio" class="custom-control-input" name="questions[1][correct]" value="0" required>
                                                 <span class="custom-control-label"></span>
                                             </label>
-                                            <input type="text" class="form-control me-2" name="questions[1][answers][0][text]" placeholder="Ответ">
+                                            <input type="text" class="form-control me-2" name="questions[1][answers][0][text]" placeholder="Ответ" required>
                                             <button type="button" class="btn btn-outline-danger ms-2" onclick="removeAnswer(this)">Х</button>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -138,7 +143,7 @@
                                                 <input type="radio" class="custom-control-input" name="questions[1][correct]" value="1">
                                                 <span class="custom-control-label"></span>
                                             </label>
-                                            <input type="text" class="form-control me-2" name="questions[1][answers][1][text]" placeholder="Ответ">
+                                            <input type="text" class="form-control me-2" name="questions[1][answers][1][text]" placeholder="Ответ" required>
                                             <button type="button" class="btn btn-outline-danger ms-2" onclick="removeAnswer(this)">Х</button>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -146,7 +151,7 @@
                                                 <input type="radio" class="custom-control-input" name="questions[1][correct]" value="2">
                                                 <span class="custom-control-label"></span>
                                             </label>
-                                            <input type="text" class="form-control me-2" name="questions[1][answers][2][text]" placeholder="Ответ">
+                                            <input type="text" class="form-control me-2" name="questions[1][answers][2][text]" placeholder="Ответ" required>
                                             <button type="button" class="btn btn-outline-danger ms-2" onclick="removeAnswer(this)">Х</button>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center mt-3">
@@ -154,10 +159,10 @@
                                                 <input type="radio" class="custom-control-input" name="questions[1][correct]" value="3">
                                                 <span class="custom-control-label"></span>
                                             </label>
-                                            <input type="text" class="form-control me-2" name="questions[1][answers][3][text]" placeholder="Ответ">
+                                            <input type="text" class="form-control me-2" name="questions[1][answers][3][text]" placeholder="Ответ" required>
                                             <button type="button" class="btn btn-outline-danger ms-2" onclick="removeAnswer(this)">Х</button>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
                         </div>
@@ -174,8 +179,10 @@
             </div>
 
             <div class="card-footer">
-                <a href="/admin/topic/{topic->id}" class="btn btn-default">Назад</a>
-                <button type="submit" class="btn btn-success my-1 float-end">Сохранить</button>
+                @if ($readonly)
+                    <a href="/admin/topic/{{$topic->id}}" class="btn btn-default">Назад</a>
+                @endif               
+                <button type="submit" class="btn btn-success my-1 float-end">Создать</button>
             </div>
         </div>
 
@@ -199,6 +206,13 @@
 
 
 @section('scripts')
+
+    <!-- SELECT2 JS -->
+    <script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
+
+        <!-- FORMVALIDATION JS -->
+    <script src="{{ asset('assets/js/form-validation-my.js') }}"></script>
+
 <script>
     let questionId = 2; // Начинаем с 2, т.к. первый вопрос уже есть
     let questionToDelete = null;
@@ -221,13 +235,13 @@
                 <div class="row mb-4">
                     <label class="col-md-3 form-label">Вопрос :</label>
                     <div class="col-md-9">
-                        <input type="text" name="questions[${currentQuestionId}][text]" class="form-control" placeholder="Вопрос">
+                        <input type="text" name="questions[${currentQuestionId}][text]" class="form-control" placeholder="Вопрос" required>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label class="col-md-3 form-label">Тип ответа :</label>
                     <div class="col-md-9">
-                        <select name="questions[${currentQuestionId}][answer_type]" class="form-control form-select" onchange="changeAnswerType(this)">
+                        <select name="questions[${currentQuestionId}][answer_type]" class="form-control form-select" onchange="changeAnswerType(this)" >
                             <option value="0">Один правильный</option>
                             <option value="1">Много правильных</option>
                             <option value="2">Текст</option>
@@ -237,7 +251,8 @@
                 <div class="row">
                     <label class="col-md-3 form-label mb-4">Ответы :</label>
                     <div class="col-md-9 mb-4">
-                        <div class="answers" id="answers-${currentQuestionId}"></div>
+                        <div class="answers" id="answers-${currentQuestionId}">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -260,19 +275,24 @@
     function addAnswer(questionIndex) {
         const answersContainer = document.getElementById(`answers-${questionIndex}`);
         const answerIndex = getNextAnswerIndex(answersContainer);
-        
+
         const answerTypeSelect = document.querySelector(`[name="questions[${questionIndex}][answer_type]"]`);
         const answerType = answerTypeSelect?.value ?? '0';
-        const inputType = answerType === '1' ? 'checkbox' : 'radio';
+        const inputType = answerType === '1' ? 'checkbox' : (answerType === '0' ? 'radio' : 'text');
 
-        if (answerType === '2') {
+        // Тип ответа: текст → просто поле текста
+        if (inputType === 'text') {
             const textInputHtml = `
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                    <input type="text" class="form-control me-2" name="questions[${questionIndex}][answers][${answerIndex}][text]" placeholder="Ответ">
+                    <input type="text" class="form-control me-2" name="questions[${questionIndex}][answers][${answerIndex}][text]" placeholder="Ответ" required>
                 </div>`;
             answersContainer.insertAdjacentHTML('beforeend', textInputHtml);
             return;
         }
+
+        // Атрибут required для radio (только у первого ответа)
+        const isFirstAnswer = answersContainer.querySelectorAll(`input[type="${inputType}"]`).length === 0;
+        const radioRequired = inputType === 'radio' && isFirstAnswer ? 'required' : '';
 
         const nameAttr = inputType === 'radio'
             ? `questions[${questionIndex}][correct]`
@@ -281,15 +301,16 @@
         const answerHtml = `
             <div class="d-flex justify-content-between align-items-center mt-3">
                 <label class="custom-control custom-${inputType}-md me-2">
-                    <input type="${inputType}" class="custom-control-input" name="${nameAttr}" value="${answerIndex}">
+                    <input type="${inputType}" class="custom-control-input" name="${nameAttr}" value="${answerIndex}" ${radioRequired}>
                     <span class="custom-control-label"></span>
                 </label>
-                <input type="text" class="form-control me-2" name="questions[${questionIndex}][answers][${answerIndex}][text]" placeholder="Ответ">
+                <input type="text" class="form-control me-2" name="questions[${questionIndex}][answers][${answerIndex}][text]" placeholder="Ответ" required>
                 <button type="button" class="btn btn-outline-danger ms-2" onclick="removeAnswer(this)">Х</button>
             </div>`;
-        
+
         answersContainer.insertAdjacentHTML('beforeend', answerHtml);
     }
+
 
     function getNextAnswerIndex(answersContainer) {
         const inputs = answersContainer.querySelectorAll('input[name*="[answers]["][name$="[text]"]');

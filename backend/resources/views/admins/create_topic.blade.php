@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label class="form-label">Наименование темы</label>
                             <input type="text" class="form-control" name="topic_name" placeholder="Тема" required>
-                            <div class="invalid-feedback">Пожалуйста введите наименование темы.</div>                               
+                            <div class="invalid-feedback">Пожалуйста введите наименование темы.</div> 
                         </div>
                     </div>
                     <div class="form-group">
@@ -61,7 +61,7 @@
 
                 <div class="card-footer">
                     <a href="/admin/topic" class="btn btn-default">Назад</a>
-                    <button type="submit" class="btn btn-success my-1 float-end">Сохранить</button>
+                    <button type="submit" class="btn btn-success my-1 float-end">Создать</button>
                 </div>
             </div>
         </form>
@@ -77,9 +77,9 @@
     <!-- SELECT2 JS -->
     <script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
 
-    <!-- FORMVALIDATION JS -->
+        <!-- FORMVALIDATION JS -->
     <script src="{{ asset('assets/js/form-validation.js') }}"></script>
 
-    <!-- CUSTOM JS -->
+        <!-- CUSTOM JS -->
     <!-- <script src="{{ asset('assets/js/custom.js') }}"></script> -->
 @endsection
