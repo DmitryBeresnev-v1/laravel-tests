@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClientController;
 
 use App\Http\Controllers\ClassesController;
 
@@ -16,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Клиентская часть
+Route::get('/client', [ClientController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class,"view"]);
 //Route::get('/{name}', [SubjectController::class,"view"]);
 
