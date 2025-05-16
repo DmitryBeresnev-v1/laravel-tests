@@ -44,9 +44,13 @@
                                     </ol>
                                 </div>
                                 <h5 class="card-title">Содержание:</h5>
-                                    <div class="example mb-5">
-                                        {!! $topic->description !!}
-                                    </div>
+                                    @if (!empty($topic->description) && trim(strip_tags($topic->description)) !== '')
+                                        <div class="example mb-5">
+                                            {!! $topic->description !!}
+                                        </div>
+                                    @else
+                                        <p>Нет описания этой темы.</p>
+                                    @endif
                                 <div class="text-end">
                                     <a class="btn btn-primary" href="admin/test/id/update">Редактировать</a>
                                 </div>
