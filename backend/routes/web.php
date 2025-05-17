@@ -8,6 +8,7 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\UsersController;
 
 use App\Http\Controllers\ClassesController;
 
@@ -73,6 +74,19 @@ Route::prefix('admin')
                     Route::post('/', 'store')->name('subject.store');  //Запись БД
                     Route::put('/{subjectId}', 'update');              //Изменения БД
                     Route::delete('/{subjectId}/delete', 'destroy');   //Удаление БД
+        });
+
+        Route::prefix('users') -> controller(UsersController::class) -> whereNumber('usersId')
+            //-> middleware(['admin'])
+            -> group(function () {
+                    Route::get('/', 'index');                          //Вывод всех предметов/разделов клиенту
+                    // Route::get('/{usertId}', 'show');
+                    Route::get('/create', 'create');                   //Форма создания предметов/разделов
+                    Route::get('/{userId}/edit', 'edit');            //Форма изменения предмета/раздела
+
+                    Route::post('/', 'store')->name('users.store');  //Запись БД
+                    Route::put('/{userId}', 'update');               //Изменения БД
+                    Route::delete('/{userId}/delete', 'destroy')->name('users.destroy');    //Удаление БД
         });
 });
 
