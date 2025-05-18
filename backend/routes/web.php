@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Клиентская часть
+Route::get('/form1', [ClientController::class, 'form1']);
+Route::get('/form2', [ClientController::class, 'form2']);
 
 Route::get('/client/{nameSubject}', [ClientController::class, 'index']);
 

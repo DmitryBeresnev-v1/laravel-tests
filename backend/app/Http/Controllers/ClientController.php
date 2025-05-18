@@ -17,4 +17,14 @@ class ClientController extends Controller
         
         return view('client.form', ['subject' => $subject]);
     }
+
+    public function form1()
+    {
+        return view('client.form1');
+    }
+    
+    public function form2()
+    {
+        return view('client.form2');
+    }
 }
