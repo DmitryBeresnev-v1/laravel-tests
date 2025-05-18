@@ -124,8 +124,11 @@ class TestController extends Controller
     }
 
     /* Remove the specified resource from storage. */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $test = Test::findOrFail($id); // Найдёт или выдаст 404
+        $test -> delete(); // Удаление
+
+        return redirect()->back()->with('success', 'Пользователь успешно удалён.');
     }
 }

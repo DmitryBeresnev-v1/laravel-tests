@@ -52,7 +52,10 @@ class UsersController extends Controller
     {
         //dd($id);
         $user = User::findOrFail($id); // Найдёт или выдаст 404
-        $user -> delete(); // Удаление пользователя
+        if ($user->id == '1')
+            return redirect()->back()->with('errors', 'Пользователь ек может быть удален.');
+        else
+            $user -> delete(); // Удаление пользователя
 
         return redirect()->back()->with('success', 'Пользователь успешно удалён.');
 

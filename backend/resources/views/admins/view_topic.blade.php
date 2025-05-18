@@ -78,9 +78,14 @@
                                                             <td>{{ $test->user->name }}</td>
                                                             <td>{{ $test->quest->count() }}</td>
                                                             <td class="text-center align-middle">
-                                                                <div class="btn-group align-top">
-                                                                    <a class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</a> <button class="btn btn-sm btn-primary badge" type="button"><i class="fa fa-trash"></i></button>
-                                                                </div>
+                                                                <form action="/admin/test/{{ $test -> id }}/delete" method="POST" style="display:inline">
+                                                                    <div class="btn-group align-top">
+                                                                        <a class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</a> 
+                                                                            @csrf
+                                                                            @method('DELETE')           
+                                                                        <button class="btn btn-sm btn-primary badge" type="submit" onclick="return confirm('Удалить тест?')"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                     @endforeach

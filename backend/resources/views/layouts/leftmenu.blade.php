@@ -24,6 +24,7 @@
             </li>
             <li class="slide">
                 <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/topic"><i class="side-menu__icon fe fe-slack"></i><span class="side-menu__label">Мои темы</span></a>
+                <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/test/create"><i class="side-menu__icon fe fe-package"></i><span class="side-menu__label">Создать тест</span></a>
             </li>
             <li class="sub-category">
                 <h3>Просмотр</h3>

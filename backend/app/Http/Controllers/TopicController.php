@@ -76,9 +76,12 @@ class TopicController extends Controller
     }
 
     /* Remove the specified resource from storage. */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $topic = Topic::findOrFail($id); // Найдёт или выдаст 404
+        $topic -> delete(); // Удаление
+
+        return redirect()->back()->with('success', 'Пользователь успешно удалён.');
     }
     
     
