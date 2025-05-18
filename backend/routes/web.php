@@ -18,11 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Клиентская часть
-Route::get('/client', [ClientController::class, 'index']);
-Route::get('/dashboard', [DashboardController::class,"view"]);
-//Route::get('/{name}', [SubjectController::class,"view"]);
 
-Route::get('/test', [ClassesController::class,"test"]);
+Route::get('/client/{nameSubject}', [ClientController::class, 'index']);
 
 //Только залогиненные могут иметь возможность работать с темами и тестами
 Route::prefix('auth') -> controller(LoginController::class)
