@@ -52,12 +52,6 @@
                     <div> errors </div>
                 @endif
                 <!-- CONTAINER OPEN -->
-                <div class="col col-login mx-auto mt-7">
-                    <div class="text-center">
-                        <img src="../assets/images/brand/logo-white.png" class="header-brand-img" alt="">
-                    </div>
-                </div>
-
                 <div class="container-login100">
                     <div class="wrap-login100 p-6">
                         <form action="login" method="post" class="login100-form validate-form">
@@ -70,7 +64,7 @@
                                     <div class="tabs-menu1">
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs">
-                                            <li class="mx-0"><a href="#tab5" class="active" data-bs-toggle="tab">Email</a></li>
+                                            <li class="mx-0"><a href="#tab5" class="active" data-bs-toggle="tab">Login</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -89,18 +83,12 @@
                                                 </a>
                                                 <input class="input100 border-start-0 form-control ms-0" name="password" type="password" placeholder="Password">
                                             </div>
-                                            <div class="text-end pt-4">
-                                                <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">Forgot Password?</a></p>
-                                            </div>
                                             <div class="container-login100-form-btn">
                                                 <button type="submit" class="login100-form-btn btn-primary">
                                                         Login
                                                 </button>
                                             </div>
-                                            <div class="text-center pt-3">
-                                                <p class="text-dark mb-0">Not a member?<a href="register.html" class="text-primary ms-1">Sign UP</a></p>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
