@@ -95,6 +95,7 @@
 
             <!-- Study Content -->
             <div id="study-content" class="fade-in">
+                
                 <!-- Список тем -->
                 <section id="topics-section" class="mb-12">
                     <div class="flex justify-between items-center mb-6">
@@ -127,7 +128,7 @@
                                                     {{ $topic->class->name }}
                                                 </snap>
                                             </div>
-                                            <p class="text-gray-600 mb-4">Нажмите, чтобы узнать подробнее</p>
+                                            <p class="text-gray-600 mb-4">{{ $topic->description }}</p>
                                             <div class="flex flex-wrap gap-3">
                                                 <button onclick="showTopic(this)" class="test-btn bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
                                                     <i class="fas fa-book-open mr-2"></i> Учебный материал
@@ -148,7 +149,7 @@
             <!-- Test Content -->
             <div id="test-content" style="display: none;">
                 <!-- Список тестов -->
-                <section id="tests-section" class="mb-12">
+                <section id="tests-section" class="fade-in">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-2xl md:text-2xl font-bold text-gray-800 flex items-center">
                             <i class="fas fa-list-check text-purple-500 mr-3"></i>
@@ -209,6 +210,10 @@
      <!-- JQUERY JS -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script>
+        
+        const data = @json($data);
+        console.log(data); 
+
         function showTab(tab) {
             document.getElementById('study-content').style.display = (tab === 'study') ? 'block' : 'none';
             document.getElementById('test-content').style.display = (tab === 'test') ? 'block' : 'none';

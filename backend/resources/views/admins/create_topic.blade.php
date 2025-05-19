@@ -27,6 +27,11 @@
                             <input type="text" class="form-control" name="topic_name" placeholder="Тема" required>
                             <div class="invalid-feedback">Пожалуйста введите наименование темы.</div> 
                         </div>
+                        <div class="form-group">
+                            <label class="form-label">Краткое описание темы</label>
+                            <input type="text" class="form-control" name="topic_description" placeholder="Описание" required>
+                            <div class="invalid-feedback">Пожалуйста введите краткое описание темы.</div> 
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
@@ -55,7 +60,7 @@
                     
                     <div>
                         <label class="form-label">Описание или обучающий материал</label>
-                        <textarea class="content" name="topic_description" ></textarea>
+                        <textarea class="content" name="topic_content" ></textarea>
                     </div>
                 </div>
 

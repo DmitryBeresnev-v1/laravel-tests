@@ -16,12 +16,12 @@ class Test extends Model
         'created_by',
     ];
 
-    public function quest()
+    public function quests()
     {
         return $this->hasMany(Quest::class, 'test_id');
     }
     
-    public function topic()
+    public function topics()
     {
         return $this->belongsTo(Topic::class);
     }

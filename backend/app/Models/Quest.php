@@ -17,13 +17,13 @@ class Quest extends Model
         'type',
     ];
     
-    public function test()
+    public function tests()
     {
         return $this->belongsTo(Test::class);
     }
 
     public function answers()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasMany(Answer::class, 'question_id');
     }
 }

@@ -14,7 +14,7 @@ class TopicController extends Controller
 {
     public function index(Request $request)
     {   
-        $user = User::with(['topics', 'tests', 'tests.quest'])->find(Auth::user()->id);
+        $user = User::with(['topics', 'tests', 'tests.quests'])->find(Auth::user()->id);
 
         return view('admins.user_topics', ['user' =>$user]);
     }
@@ -36,11 +36,13 @@ class TopicController extends Controller
             'subject_select' => 'required|integer|min:1',
             'class_select' => 'required|integer|min:1',
             'topic_description' => 'required',
+            'topic_content' => 'required',
         ]);
 
        $topicId = Topic::create([
            'title' => $validated['topic_name'],
            'description' => $validated['topic_description'],
+           'content' => $validated['topic_content'],
            'class_id' => $validated['class_select'],
            'subject_id' => $validated['subject_select'],
         //    'average_time' => 0;
@@ -57,7 +59,7 @@ class TopicController extends Controller
     /* Display the specified resource. */
     public function show($topicId)
     {
-        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.quest'])->findOrFail($topicId);
+        $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.quests'])->findOrFail($topicId);
         $hasTest = $topic->tests->isEmpty();
 
         return view('admins.view_topic', ["topic"=>$topic, 'hasTest'=>$hasTest]);

@@ -43,16 +43,22 @@
                                         <li class="breadcrumb-item1">{{ $topic->title }}</li>
                                     </ol>
                                 </div>
+                                <h5 class="card-title">Краткое описание:</h5>
+                                <div class="ms-4 mb-5 mt-1">
+                                    <p> {{ $topic->description }} </p>    
+                                </div>
                                 <h5 class="card-title">Содержание:</h5>
-                                    @if (!empty($topic->description) && trim(strip_tags($topic->description)) !== '')
+                                    @if (!empty($topic->content) && trim(strip_tags($topic->content)) !== '')
                                         <div class="example mb-5">
-                                            {!! $topic->description !!}
+                                            {!! $topic->content !!}
                                         </div>
                                     @else
-                                        <p>Нет описания этой темы.</p>
+                                        <div class="ms-4 mb-5 mt-1">
+                                            <p>Нет описания этой темы.</p>
+                                        </div>
                                     @endif
                                 <div class="text-end">
-                                    <a class="btn btn-primary" href="admin/test/id/update">Редактировать</a>
+                                    <a class="btn btn-primary" href="/admin/topic/{{ $topic->id }}/edit">Редактировать</a>
                                 </div>
                             
                             </div>
@@ -76,7 +82,7 @@
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $test->title }}</td>
                                                             <td>{{ $test->user->name }}</td>
-                                                            <td>{{ $test->quest->count() }}</td>
+                                                            <td>{{ $test->quests->count() }}</td>
                                                             <td class="text-center align-middle">
                                                                 <form action="/admin/test/{{ $test -> id }}/delete" method="POST" style="display:inline">
                                                                     <div class="btn-group align-top">

@@ -14,6 +14,7 @@ class Topic extends Model
         'class_id',
         'title',
         'description',
+        'content',
         'created_by',
     ];
 
