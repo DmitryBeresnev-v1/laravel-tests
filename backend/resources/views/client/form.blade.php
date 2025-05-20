@@ -171,12 +171,14 @@
                                 
                                 @foreach ($topic->tests as $test)
                                     <div class="test-conteiner">                                      
-                                        
                                         {{-- Контетнт самого теста --}}
                                         <div class="full-test" style="display:none">
                                             <div id="test-detail" class="bg-white p-6 rounded-lg shadow fade-in">
                                                 <h3 id="test-title" class="text-2xl font-bold mb-4">{{ $test->title }}</h3>
                                                 <p id="test-description" class="text-gray-700 mb-6"> </p>
+                                                    
+                                                {{-- Тело теста --}}
+                                            
                                             </div>
                                         </div>
 
@@ -190,7 +192,8 @@
                                                 </div>
                                                 <p class="text-gray-600 mb-4">{{ $test->description }}</p>
                                                 <div class="flex flex-wrap gap-3">
-                                                    <button class="test-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
+                                                    <button class="test-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center"
+                                                    onclick="loadTest(this)">
                                                         <i class="fas fa-question-circle mr-2"></i> Пройти тест
                                                     </button>
                                                 </div>
@@ -210,9 +213,10 @@
      <!-- JQUERY JS -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script>
-        
-        const data = @json($data);
-        console.log(data); 
+
+        function loadTest(selectTest){
+            console.log("selectTest:", selectTest);
+        }
 
         function showTab(tab) {
             document.getElementById('study-content').style.display = (tab === 'study') ? 'block' : 'none';
