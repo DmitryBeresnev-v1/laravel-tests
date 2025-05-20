@@ -116,7 +116,7 @@
                                     <div class="full-topic" style="display:none">
                                         <div id="topic-detail" class="bg-white p-6 rounded-lg shadow fade-in">
                                             <h3 id="topic-title" class="text-2xl font-bold mb-4">{{ $topic->title }}</h3>
-                                            <p id="topic-description" class="text-gray-700 mb-6">{!! $topic->description !!}</p>
+                                            <p id="topic-description" class="text-gray-700 mb-6">{!! $topic->content !!}</p>
                                         </div>
                                     </div>
 
