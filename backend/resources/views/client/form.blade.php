@@ -316,13 +316,20 @@
         function showTest(d){
             let currentQuestion = 0
 
+            //Поиск и определение необходимых элементов для взаимодействия
+            //Находит по конструкции родительский объект отвечающий за тест
             let parent = $(d).parent().parent().parent().parent();
+            //Находит div с классом 'full-test' для отрисовки
             let testMenu = parent.find('.full-test');
             
+            //Находит родительский объект в котором храняться конструкции вопросов
             let questsTest = parent.find('.question-container');
+            //Помещает дочерние (на один уровень ниже) объекты в массив
             currentTest = questsTest.children().toArray();
-
+            
+            //Обнуляет массив ответов пользователя
             userAnswers = Array(currentTest.length).fill(null);
+
 
             $(currentTest[currentQuestion]).show();
             testMenu.show();
