@@ -103,8 +103,8 @@
                             <i class="fas fa-list-ul mr-3 text-purple-500"></i>
                             <span id="selected-subject-text">Список тем</span>
                         </h2>
-                        <div class="backButton" style="display:none">
-                            <button id="backButton" onclick="backToTopics()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">
+                        <div class="backButtonTopic" style="display:none">
+                            <button onclick="backToTopics()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">
                                 <i class="fas fa-arrow-left mr-2"></i> Назад
                             </button>
                         </div>
@@ -155,8 +155,8 @@
                             <i class="fas fa-list-check text-purple-500 mr-3"></i>
                             <span id="selected-subject-text">Список тестов</span>
                         </h2>
-                        <div class="backButton" style="display:none">
-                            <button id="backButton" onclick="backToTopics()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">
+                        <div class="backButtonTest" style="display:none">
+                            <button onclick="backToTests()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">
                                 <i class="fas fa-arrow-left mr-2"></i> Назад
                             </button>
                         </div>
@@ -172,13 +172,91 @@
                                 @foreach ($topic->tests as $test)
                                     <div class="test-conteiner">                                      
                                         {{-- Контетнт самого теста --}}
-                                        <div class="full-test" style="display:none">
-                                            <div id="test-detail" class="bg-white p-6 rounded-lg shadow fade-in">
-                                                <h3 id="test-title" class="text-2xl font-bold mb-4">{{ $test->title }}</h3>
-                                                <p id="test-description" class="text-gray-700 mb-6"> </p>
-                                                    
-                                                {{-- Тело теста --}}
-                                            
+                                        <div class="full-test" style="display:none">          
+                                            <!-- Тело теста -->
+                                            <div id="test-area" class="bg-white rounded-xl shadow-lg p-6 mb-8 fade-in">
+                                                <div class="flex justify-between items-center mb-6">
+                                                    <h2 id="test-title" class="text-2xl font-semibold text-gray-800 flex items-center">
+                                                        <i class="fas fa-question-circle text-purple-500 mr-3"></i>
+                                                        <span>Тест: {{ $test->title }}</span>
+                                                    </h2>
+                                                    <div class="flex items-center">
+                                                        <span id="question-counter" class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">1 (тут должен быть №вопроса)/{{ $test->quests->count()}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Progress Bar -->
+                                                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                                                    <div id="progress-bar" class="progress-bar bg-purple-600 h-2.5 rounded-full" style="width: 0%"></div>
+                                                </div>
+
+                                                <!-- Question -->
+                                                <div class="question-container mb-8 ">
+                                                    @foreach ($test->quests as $quest)
+                                                        <div class="quest-{{ $loop->iteration }} hidden">
+                                                                <!-- Вопрос -->
+                                                            <h3 class="break-words line-clamp-3 text-xl font-medium text-gray-800 mb-6">{{ $quest->question }}</h3>
+                                                        
+                                                            <div class="options-container grid grid-cols-1 gap-3">
+                                                                <!-- Варианты ответов -->
+                                                                @if ($quest->type == 0) 
+                                                                <!-- Если один правильный -->
+                                                                    @foreach ($quest->answers as $answer)
+                                                                        
+                                                                            <label class="option bg-white border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 border-gray-200 hover:border-purple-300 flex items-center">
+                                                                                
+                                                                                <input type="radio" name="answers[]" value="{{ $answer->id }}" class="hidden peer">
+                                                                                
+                                                                                <div class="w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center mr-3 border-gray-300 peer-checked:bg-purple-500 peer-checked:border-purple-500">
+                                                                                    <!-- круг -->
+                                                                                    <div class="w-3 h-3 rounded-full bg-white peer-checked:bg-white"></div>
+                                                                                </div>
+                                                                                <span class="break-words line-clamp-3">{{ $answer->answer }}</span>
+                                                                            </label>
+
+                                                                    @endforeach
+                                                                @elseif ($quest->type == 1)
+                                                                <!-- Если много правильных -->
+                                                                    @foreach ($quest->answers as $answer)
+                                                                        
+                                                                        <label class="option bg-white border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 border-gray-200 hover:border-purple-300 flex items-center">
+                                                                            
+                                                                            <input type="checkbox" name="answers[]" value="{{ $answer->id }}" class="hidden peer">
+                                                                            
+                                                                            <div class="w-6 h-6 rounded border-2 flex-shrink-0 flex items-center justify-center mr-3 border-gray-300 peer-checked:bg-purple-500 peer-checked:border-purple-500">
+                                                                                <!-- галочка -->
+                                                                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                                                </svg>
+                                                                            </div>
+
+                                                                            <span class="break-words line-clamp-3">{{ $answer->answer }}</span>
+                                                                        </label>
+
+                                                                    @endforeach
+                                                                @else
+                                                                <!-- Если текст --> 
+                                                                    <label class="flex items-center w-full">
+                                                                        <input type="text" name="text_answer[{{ $answer->id }}]" class="border-2 rounded-lg border-gray-200 rounded px-3 py-4 w-full focus:outline-none focus:border-purple-300" placeholder="Введите ответ">
+                                                                    </label>            
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+
+                                                <!-- Navigation -->
+                                                <div class="flex justify-between">
+                                                    <button id="prev-btn" onclick="prevQuestion(this)" class="hidden bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition duration-300 flex items-center">
+                                                        <i class="fas fa-arrow-left mr-2"></i> Назад
+                                                    </button>
+                                                    <button id="next-btn" onclick="nextQuestion(this)" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 flex items-center ml-auto">
+                                                        Далее <i class="fas fa-arrow-right ml-2"></i>
+                                                    </button>
+                                                    <button id="finish-btn" onclick="finishTest(this)" class="hidden bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 flex items-center">
+                                                        Завершить <i class="fas fa-check ml-2"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -193,7 +271,7 @@
                                                 <p class="text-gray-600 mb-4">{{ $test->description }}</p>
                                                 <div class="flex flex-wrap gap-3">
                                                     <button class="test-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center"
-                                                    onclick="loadTest(this)">
+                                                    onclick="showTest(this)">
                                                         <i class="fas fa-question-circle mr-2"></i> Пройти тест
                                                     </button>
                                                 </div>
@@ -213,10 +291,17 @@
      <!-- JQUERY JS -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script>
+        
+        // Current test state
+        let userAnswers = [];
+        let startTime = null;
+        let currentTest = null;
+        let currentQuestion = 0;
 
-        function loadTest(selectTest){
-            console.log("selectTest:", selectTest);
-        }
+        const progressBar = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const finishBtn = document.getElementById('finish-btn');
 
         function showTab(tab) {
             document.getElementById('study-content').style.display = (tab === 'study') ? 'block' : 'none';
@@ -226,6 +311,68 @@
             document.getElementById('test-tab').classList.toggle('active', tab === 'test');
         }
 
+
+        // Test section
+        function showTest(d){
+            let currentQuestion = 0
+
+            let parent = $(d).parent().parent().parent().parent();
+            let testMenu = parent.find('.full-test');
+            
+            let questsTest = parent.find('.question-container');
+            currentTest = questsTest.children().toArray();
+
+            userAnswers = Array(currentTest.length).fill(null);
+
+            $(currentTest[currentQuestion]).show();
+            testMenu.show();
+
+            $('.short-test').hide();
+            $('.backButtonTest').show();
+
+            updateQuestion();
+        }
+
+        function updateQuestion(){
+            //Отрисовать на прогресс баре процесс ответов
+            progressBar.style.width = `${((currentQuestion + 1) / currentTest.length) * 100}%`;
+
+            //Показать/скрыть кнопку "Назад" при нахождении на всех вопросах кроме первого
+            (currentQuestion >= 1) ? $(prevBtn).show() : $(prevBtn).hide();
+
+            //Показать/скрыть кнопку "Завершить" при нахождении на поледнем вопросе
+            if (currentQuestion >= currentTest.length - 1){
+                $(finishBtn).show(); 
+                $(nextBtn).hide();
+            } else {
+                $(finishBtn).hide(); 
+                $(nextBtn).show();
+            }
+        }
+
+        //Предыдущий вопрос
+        function prevQuestion(){
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                updateQuestion();
+            }
+        }
+
+        //Следующий вопрос
+        function nextQuestion(){
+            if (currentQuestion < currentTest.length - 1) {
+                currentQuestion++;
+                updateQuestion();
+            }
+        }
+
+        function finishTest(d){
+
+        }
+
+
+
+        // Topic section
         function showTopic(d) {
             let parent = $(d).parent().parent().parent().parent();
             let full_topic = parent.find('.full-topic');
@@ -233,13 +380,19 @@
             full_topic.show();
 
             $('.short-topic').hide();
-            $('.backButton').show();
+            $('.backButtonTopic').show();
         }
 
         function backToTopics() {
             $('.full-topic').hide();
             $('.short-topic').show();
-            $('.backButton').hide();
+            $('.backButtonTopic').hide();
+        }
+
+        function backToTests() {
+            $('.full-test').hide();
+            $('.short-test').show();
+            $('.backButtonTest').hide();
         }
     </script>
 </body>
