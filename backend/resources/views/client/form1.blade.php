@@ -370,7 +370,7 @@
                 </div>
 
                 <!-- Results (hidden by default) -->
-                <div id="results-area" class="hidden bg-white rounded-xl shadow-lg p-8 text-center fade-in">
+                <div id="results-area" class=" bg-white rounded-xl shadow-lg p-8 text-center fade-in">
                     <div class="flex justify-center mb-6">
                         <div class="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center">
                             <i class="fas fa-trophy text-4xl text-yellow-500"></i>
