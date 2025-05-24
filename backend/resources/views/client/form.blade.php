@@ -209,11 +209,11 @@
             </div>
         </main>
 
-
+        
      <!-- JQUERY JS -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script>
-
+        //point reset
         function loadTest(selectTest){
             console.log("selectTest:", selectTest);
         }
