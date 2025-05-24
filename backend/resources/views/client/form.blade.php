@@ -199,13 +199,13 @@
                                                         
                                                             <div class="options-container grid grid-cols-1 gap-3">
                                                                 <!-- Варианты ответов -->
-                                                                @if ($quest->type == 0) 
+                                                               
                                                                 <!-- Если один правильный -->
-                                                                    @foreach ($quest->answers as $answer)
-                                                                        
+                                                                @foreach ($quest->answers as $answer)
+                                                                    @if ($quest->type == 0)         
                                                                             <label class="option bg-white border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 border-gray-200 hover:border-purple-300 flex items-center">
                                                                                 
-                                                                                <input type="radio" name="answers[{{ $quest->id }}]" value="{{ $answer->answer }}" class="hidden peer">
+                                                                                <input type="radio" name="answer-single" data-answer-type="single" data-answer="{{ $answer->is_correct }}" value="{{ $answer->answer }}" class="hidden peer">
                                                                                 
                                                                                 <div class="w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center mr-3 border-gray-300 peer-checked:bg-purple-500 peer-checked:border-purple-500">
                                                                                     <!-- круг -->
@@ -213,15 +213,12 @@
                                                                                 </div>
                                                                                 <span class="break-words line-clamp-3">{{ $answer->answer }}</span>
                                                                             </label>
-
-                                                                    @endforeach
-                                                                @elseif ($quest->type == 1)
-                                                                <!-- Если много правильных -->
-                                                                    @foreach ($quest->answers as $answer)
-                                                                        
+                                                                
+                                                                    @elseif ($quest->type == 1)
+                                                                    <!-- Если много правильных -->
                                                                         <label class="option bg-white border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 border-gray-200 hover:border-purple-300 flex items-center">
                                                                             
-                                                                            <input type="checkbox" name="answers[{{ $quest->id }}]" value="{{ $answer->answer }}" class="hidden peer">
+                                                                            <input type="checkbox" name="answer-multiple" data-answer-type="multiple" data-answer="{{ $answer->is_correct }}" value="{{ $answer->answer }}" class="hidden peer">
                                                                             
                                                                             <div class="w-6 h-6 rounded border-2 flex-shrink-0 flex items-center justify-center mr-3 border-gray-300 peer-checked:bg-purple-500 peer-checked:border-purple-500">
                                                                                 <!-- галочка -->
@@ -232,14 +229,13 @@
 
                                                                             <span class="break-words line-clamp-3">{{ $answer->answer }}</span>
                                                                         </label>
-
-                                                                    @endforeach
-                                                                @else
-                                                                <!-- Если текст --> 
-                                                                    <label class="flex items-center w-full">
-                                                                        <input type="text" name="answers[{{ $quest->id }}]" class="border-2 rounded-lg border-gray-200 rounded px-3 py-4 w-full focus:outline-none focus:border-purple-300" placeholder="Введите ответ">
-                                                                    </label>            
-                                                                @endif
+                                                                    @else
+                                                                    <!-- Если текст --> 
+                                                                            <label class="flex items-center w-full">
+                                                                                <input type="text" name="answer-text-{{ $answer->id }}" data-answer-type="text" data-answer="{{ $answer->answer }}" class="border-2 rounded-lg border-gray-200 rounded px-3 py-4 w-full focus:outline-none focus:border-purple-300" placeholder="Введите ответ">
+                                                                            </label>    
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -268,31 +264,31 @@
                                                 </div>
                                             </div>
                                             <h2 class="text-3xl font-bold text-gray-800 mb-3">Тест завершен!</h2>
-                                            <p id="result-score" class="text-xl text-gray-600 mb-6">Твой результат: <span class="font-bold text-purple-600">15/20</span></p>
+                                            <p id="result-score" class="text-xl text-gray-600 mb-6">Твой результат: <span class="main-result font-bold text-purple-600">15/20</span></p>
                                             
                                             <div class="w-full bg-gray-200 rounded-full h-4 mb-8">
-                                                <div id="result-progress" class="bg-gradient-to-r from-blue-500 to-purple-600 h-4 rounded-full" style="width: 75%"></div>
+                                                <div class="result-bar bg-gradient-to-r from-blue-500 to-purple-600 h-4 rounded-full" style="width: 75%"></div>
                                             </div>
                                             
-                                            <div id="result-feedback" class="max-w-2xl mx-auto mb-8 p-4 bg-blue-50 rounded-lg">
-                                                <p class="text-gray-700">Отличный результат! Ты хорошо разбираешься в основах физики. Продолжай в том же духе!</p>
+                                            <div class="max-w-2xl mx-auto mb-8 p-4 bg-blue-50 rounded-lg">
+                                                <p class="result-feedback text-gray-700">Отличный результат! Ты хорошо разбираешься в основах физики. Продолжай в том же духе!</p>
                                             </div>
                                             
                                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                                                 <div class="bg-blue-50 p-4 rounded-lg">
                                                     <div class="text-blue-600 mb-2"><i class="fas fa-check-circle text-2xl"></i></div>
                                                     <h3 class="font-medium text-gray-800 mb-1">Правильные ответы</h3>
-                                                    <p id="correct-answers" class="text-2xl font-bold text-blue-600">15</p>
+                                                    <p class="result-correct-answers text-2xl font-bold text-blue-600">15</p>
                                                 </div>
                                                 <div class="bg-purple-50 p-4 rounded-lg">
                                                     <div class="text-purple-600 mb-2"><i class="fas fa-times-circle text-2xl"></i></div>
                                                     <h3 class="font-medium text-gray-800 mb-1">Неправильные</h3>
-                                                    <p id="wrong-answers" class="text-2xl font-bold text-purple-600">5</p>
+                                                    <p class="result-wrong-answers text-2xl font-bold text-purple-600">5</p>
                                                 </div>
                                                 <div class="bg-green-50 p-4 rounded-lg">
                                                     <div class="text-green-600 mb-2"><i class="fas fa-clock text-2xl"></i></div>
                                                     <h3 class="font-medium text-gray-800 mb-1">Время</h3>
-                                                    <p id="time-spent" class="text-2xl font-bold text-green-600">3:45</p>
+                                                    <p id="time-spent" class="result-time text-2xl font-bold text-green-600">3:45</p>
                                                 </div>
                                             </div>
                                             
@@ -334,9 +330,9 @@
     <script>
         
         // Current test state
-        let userAnswers = [];
         let startTime = null;
         let currentTest = null;
+        let questAnswer = null;
         let currentQuestion = 0;
 
         // Interactiv elements
@@ -345,6 +341,14 @@
         let finishBtn = null;
         let progressBar = null;
         let progressCount = null;
+
+        // Result elements
+        let mainCountCorrectAnswers = null;
+        let countCorrectAnswers = null;
+        let countMistacsAnswers = null;
+        let countTimeTest = null;
+        let progressBarResulr = null;
+        let feedback = null;
 
         // menu
         let testArea = null;
@@ -369,16 +373,29 @@
             //Определение всех нужных элементов
             testArea = parent.find('.full-test');                   //Тест
             resultsArea = parent.find('.results-area');             //Результат
-            let questsTest = parent.find('.question-container');    //Элемент с фопросами
+            let questsTest = parent.find('.question-container');    //Контейнер с вопросами
+            let questAnswers = parent.find('.options-container');    //Контейнер с ответами
 
+            //Кнопки теста
             nextBtn = parent.find('.next-btn');
             prevBtn = parent.find('.prev-btn');
             finishBtn = parent.find('.finish-btn');
             progressBar = parent.find('.progress-bar');
             progressCount = parent.find('.question-progress-count');
 
+            //Итоговый результат
+            mainCountCorrectAnswers = parent.find('.main-result');
+            countCorrectAnswers = parent.find('.result-correct-answers');
+            countMistacsAnswers = parent.find('.result-wrong-answers');
+            countTimeTest = parent.find('.result-time');
+            progressBarResulr = parent.find('.result-bar');
+            feedback = parent.find('.result-feedback');
+                
+
             currentTest = questsTest.children().toArray();          //Из контейнера тестов помещаются дочерние объекты в массив
-            userAnswers = Array(currentTest.length).fill(null);     //Обнуляет массив ответов пользователя
+            questAnswer = questAnswers.find('[data-answer-type][data-answer]').toArray();
+
+            //userAnswers = Array(currentTest.length).fill(null);     //Обнуляет массив ответов пользователя
 
             testArea.show();                                        //Отображает всю панель теста 
 
@@ -431,9 +448,77 @@
 
         //Закончить тест
         function finishTest(){
-            let correctAnswers = 1; 
-            userAnswers = 1;
+            let userCorrectAnswers = 0;
+            let percentage = 0;
 
+            // Группируем все input по имени (name используется для объединения ответов на один вопрос)
+            let grouped = {};
+
+            questAnswer.forEach(el => {
+                let name = $(el).attr('name');
+                if (!grouped[name]) grouped[name] = [];
+                grouped[name].push(el);
+            });
+
+            // Нормализация строки
+            function normalize(str) {
+                return String(str).trim().toLowerCase().normalize('NFC');
+            }
+
+            // Перебираем группы (каждая группа — один вопрос)
+            Object.values(grouped).forEach(group => {
+                let type = $(group[0]).data('answer-type'); // предполагаем, что все в группе одного типа
+
+                if (type === 'text') {
+                    // Ожидаем один input
+                    let input = group[0];
+                    let expected = $(input).data('answer');   // ← может быть строкой типа "Число 4"
+                    let actual = $(input).val();              // ← пользовательский ввод
+
+                    if (normalize(expected) === normalize(actual)) {
+                        userCorrectAnswers++;
+                    }
+
+                } else if (type === 'single') {
+                    let selected = group.find(el => el.checked);
+                    if (selected && $(selected).data('answer') == 1) {
+                        userCorrectAnswers++;
+                    }
+
+                } else if (type === 'multiple') {
+                    let allCorrect = true;
+
+                    for (let el of group) {
+                        let isCorrect = $(el).data('answer') == 1;
+                        let isChecked = el.checked;
+
+                        if ((isCorrect && !isChecked) || (!isCorrect && isChecked)) {
+                            allCorrect = false;
+                            break;
+                        }
+                    }
+
+                    if (allCorrect) {
+                        userCorrectAnswers++;
+                    }
+                }
+            });
+
+            mainCountCorrectAnswers.text(`${userCorrectAnswers} / ${currentTest.length}`);
+            countCorrectAnswers.text(`${userCorrectAnswers}`);
+            countMistacsAnswers.text(`${currentTest.length-userCorrectAnswers}`);
+            progressBarResulr.css('width', `${((userCorrectAnswers) / currentTest.length) * 100}%`);
+
+            percentage = ((userCorrectAnswers) / currentTest.length) * 100;
+            if (percentage >= 80) {
+                feedback.text('Отличный результат! Ты отлично разбираешься в этой теме. Так держать!');
+            } else if (percentage >= 50) {
+                feedback.text('Хороший результат! Есть над чем поработать, но основы ты усвоил хорошо.');
+            } else {
+                feedback.text('Попробуй еще раз! C практикой у тебя обязательно получится!');
+            }
+
+            console.log(`Правильных ответов: ${userCorrectAnswers}`);
 
             resultsArea.show();
             testArea.hide();
