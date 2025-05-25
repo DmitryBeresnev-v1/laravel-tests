@@ -12,30 +12,30 @@
     <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{secure_asset('assets/images/brand/favicon.ico')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/brand/favicon.ico')}}" />
 
     <!-- TITLE -->
     <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
 
     <!-- BOOTSTRAP CSS -->
-    <link id="style" href="{{secure_asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link id="style" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
 
     <!-- STYLE CSS -->
-    <link href="{{secure_asset('assets/css/card.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('assets/css/style.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('assets/css/dark-style.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('assets/css/transparent-style.css')}}" rel="stylesheet">
-    <link href="{{secure_asset('assets/css/skin-modes.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/card.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/dark-style.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/transparent-style.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/skin-modes.css')}}" rel="stylesheet" />
 
     <!--- FONT-ICONS CSS -->
-    <link href="{{secure_asset('assets/css/icons.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" />
 
     <!-- COLOR SKIN CSS -->
-    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{secure_asset('assets/colors/color1.css')}}" />
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{asset('assets/colors/color1.css')}}" />
 
     <!-- INTERNAL Switcher css -->
-    <link href="{{secure_asset('assets/switcher/css/switcher.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('assets/switcher/demo.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/switcher/css/switcher.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/switcher/demo.css')}}" rel="stylesheet" />
 
 </head>
 
@@ -57,38 +57,38 @@
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
     <!-- JQUERY JS -->
-    <script src="{{secure_asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 
     <!-- BOOTSTRAP JS -->
-    <script src="{{secure_asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{secure_asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 
     <!-- SIDE-MENU JS -->
-    <script src="{{secure_asset('assets/plugins/sidemenu/sidemenu.js')}}"></script>
+    <script src="{{asset('assets/plugins/sidemenu/sidemenu.js')}}"></script>
 
 	<!-- TypeHead js -->
-	<script src="{{secure_asset('assets/plugins/bootstrap5-typehead/autocomplete.js')}}"></script>
-    <script src="{{secure_asset('assets/js/typehead.js')}}"></script>
+	<script src="{{asset('assets/plugins/bootstrap5-typehead/autocomplete.js')}}"></script>
+    <script src="{{asset('assets/js/typehead.js')}}"></script>
 
     <!-- SIDEBAR JS -->
-    <script src="{{secure_asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+    <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
 
     <!-- Perfect SCROLLBAR JS-->
-    <script src="{{secure_asset('assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
-    <script src="{{secure_asset('assets/plugins/p-scroll/pscroll.js')}}"></script>
-    <script src="{{secure_asset('assets/plugins/p-scroll/pscroll-1.js')}}"></script>
+    <script src="{{asset('assets/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
+    <script src="{{asset('assets/plugins/p-scroll/pscroll.js')}}"></script>
+    <script src="{{asset('assets/plugins/p-scroll/pscroll-1.js')}}"></script>
 
     <!-- Color Theme js -->
-    <script src="{{secure_asset('assets/js/themeColors.js')}}"></script>
+    <script src="{{asset('assets/js/themeColors.js')}}"></script>
 
     <!-- Sticky js -->
-    <script src="{{secure_asset('assets/js/sticky.js')}}"></script>
+    <script src="{{asset('assets/js/sticky.js')}}"></script>
 
     <!-- CUSTOM JS -->
-    <script src="{{secure_asset('assets/js/custom1.js')}}"></script>
+    <script src="{{asset('assets/js/custom1.js')}}"></script>
 
     <!-- Switcher js -->
-    <script src="{{secure_asset('assets/switcher/js/switcher.js')}}"></script>
+    <script src="{{asset('assets/switcher/js/switcher.js')}}"></script>
 
     @yield('scripts')
 
