@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Физика для детей | Обучение и тестирование</title>
+    <title>Физика | Обучение и тестирование</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -133,7 +133,7 @@
                                                 <button onclick="showTopic(this)" class="test-btn bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
                                                     <i class="fas fa-book-open mr-2"></i> Учебный материал
                                                 </button>
-                                                <button class="test-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
+                                                <button onclick="showTests({{ $topic->id }})" class="test-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
                                                     <i class="fas fa-question-circle mr-2"></i> Пройти тест
                                                 </button>
                                             </div>
@@ -170,7 +170,7 @@
                                 @endif        -->
                                 
                                 @foreach ($topic->tests as $test)
-                                    <div class="test-conteiner">                                      
+                                    <div class="test-conteiner topic-{{ $topic->id }}">                                      
                                         {{-- Контетнт самого теста --}}
                                         <div class="full-test" style="display:none">          
                                             <!-- Тело теста -->
@@ -195,7 +195,7 @@
                                                     @foreach ($test->quests as $quest)
                                                         <div class="quest-{{ $loop->iteration }} hidden">
                                                                 <!-- Вопрос -->
-                                                            <h3 class="break-words line-clamp-3 text-xl font-medium text-gray-800 mb-6">{{ $quest->question }}</h3>
+                                                            <h3 class="break-words line-clamp text-xl font-medium text-gray-800 mb-6">{{ $quest->question }}</h3>
                                                         
                                                             <div class="options-container grid grid-cols-1 gap-3">
                                                                 <!-- Варианты ответов -->
@@ -301,7 +301,7 @@
                                             <div class="ms-4 mb-2 mt-1">
                                                 <div class="flex justify-between items-start">
                                                     <h3 class="text-xl font-bold mb-2 text-gray-800"> {{ $loop->iteration }}. {{ $test->title }}</h3>
-                                                    <snap class="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-0.5 rounded"> 
+                                                    <snap class="text-nowrap bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-0.5 rounded"> 
                                                         {{ $topic->class->name }}
                                                     </snap>
                                                 </div>
@@ -390,7 +390,8 @@
             countTimeTest = parent.find('.result-time');
             progressBarResulr = parent.find('.result-bar');
             feedback = parent.find('.result-feedback');
-                
+            
+            startTime = new Date();                                 //начало отсчета 
 
             currentTest = questsTest.children().toArray();          //Из контейнера тестов помещаются дочерние объекты в массив
             questAnswer = questAnswers.find('[data-answer-type][data-answer]').toArray();
@@ -450,6 +451,11 @@
         function finishTest(){
             let userCorrectAnswers = 0;
             let percentage = 0;
+            let endTime = new Date();
+            let timeDiff = (endTime - startTime) / 1000; // in seconds
+            let minutes = Math.floor(timeDiff / 60);
+            let seconds = Math.floor(timeDiff % 60);
+            let timeString = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
 
             // Группируем все input по имени (name используется для объединения ответов на один вопрос)
             let grouped = {};
@@ -518,6 +524,8 @@
                 feedback.text('Попробуй еще раз! C практикой у тебя обязательно получится!');
             }
 
+            countTimeTest.text(`${timeString}`);
+
             console.log(`Правильных ответов: ${userCorrectAnswers}`);
 
             resultsArea.show();
@@ -549,6 +557,14 @@
             $('.short-test').show();
             $('.backButtonTest').hide();
         }
+
+        function showTests(topicId){
+            showTab('test');
+
+            $('.test-conteiner').hide();
+            $('.topic-' + topicId).show(); //jQuery animation show
+        }
+
     </script>
 </body>
 </html>
