@@ -58,7 +58,7 @@
                                         </div>
                                     @endif
                                 <div class="text-end">
-                                    <a class="btn btn-primary" href="/admin/topic/{{ $topic->id }}/edit">Редактировать</a>
+                                    <a class="btn btn-primary disabled" href="/admin/topic/{{ $topic->id }}/edit">Редактировать</a>
                                 </div>
                             
                             </div>
@@ -86,7 +86,7 @@
                                                             <td class="text-center align-middle">
                                                                 <form action="/admin/test/{{ $test -> id }}/delete" method="POST" style="display:inline">
                                                                     <div class="btn-group align-top">
-                                                                        <a class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Редактировать</a> 
+                                                                        <a class="btn btn-sm btn-primary badge" data-bs-toggle="" type="button disabled">Редактировать</a> 
                                                                             @csrf
                                                                             @method('DELETE')           
                                                                         <button class="btn btn-sm btn-primary badge" type="submit" onclick="return confirm('Удалить тест?')"><i class="fa fa-trash"></i></button>

@@ -52,7 +52,7 @@
                                         <form action="/admin/topic/{{ $topic -> id }}/delete" method="POST" style="display:inline">
                                             <td class="text-center align-middle">
                                                 <div class="btn-group align-top">
-                                                    <a href="/admin/topic/{{ $topic->id }}" class="btn btn-sm btn-primary badge" data-target="#user-form-modal" data-bs-toggle="" type="button">Подробнее</a> 
+                                                    <a href="/admin/topic/{{ $topic->id }}" class="btn btn-sm btn-primary badge" data-target="#user-form-modal" type="button">Подробнее</a> 
                                                         @csrf
                                                         @method('DELETE')
                                                     <button class="btn btn-sm btn-primary badge" type="submit" onclick="return confirm('Удалить тему и вложенные в нее тесты?')"><i class="fa fa-trash"></i></button>
