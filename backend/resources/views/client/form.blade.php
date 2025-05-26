@@ -205,7 +205,7 @@
                                                                     @if ($quest->type == 0)         
                                                                             <label class="option bg-white border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 border-gray-200 hover:border-purple-300 flex items-center">
                                                                                 
-                                                                                <input type="radio" name="answer-single" data-answer-type="single" data-answer="{{ $answer->is_correct }}" value="{{ $answer->answer }}" class="hidden peer">
+                                                                                <input type="radio" name="answer-{{ $quest->id }}-single" data-answer-type="single" data-answer="{{ $answer->is_correct }}" value="{{ $answer->answer }}" class="hidden peer">
                                                                                 
                                                                                 <div class="w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center mr-3 border-gray-300 peer-checked:bg-purple-500 peer-checked:border-purple-500">
                                                                                     <!-- круг -->
