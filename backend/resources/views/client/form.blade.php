@@ -218,7 +218,7 @@
                                                                     <!-- Если много правильных -->
                                                                         <label class="option bg-white border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 border-gray-200 hover:border-purple-300 flex items-center">
                                                                             
-                                                                            <input type="checkbox" name="answer-multiple" data-answer-type="multiple" data-answer="{{ $answer->is_correct }}" value="{{ $answer->answer }}" class="hidden peer">
+                                                                            <input type="checkbox" name="answer-{{ $quest->id }}-multiple" data-answer-type="multiple" data-answer="{{ $answer->is_correct }}" value="{{ $answer->answer }}" class="hidden peer">
                                                                             
                                                                             <div class="w-6 h-6 rounded border-2 flex-shrink-0 flex items-center justify-center mr-3 border-gray-300 peer-checked:bg-purple-500 peer-checked:border-purple-500">
                                                                                 <!-- галочка -->
@@ -232,7 +232,7 @@
                                                                     @else
                                                                     <!-- Если текст --> 
                                                                             <label class="flex items-center w-full">
-                                                                                <input type="text" name="answer-text-{{ $answer->id }}" data-answer-type="text" data-answer="{{ $answer->answer }}" class="border-2 rounded-lg border-gray-200 rounded px-3 py-4 w-full focus:outline-none focus:border-purple-300" placeholder="Введите ответ">
+                                                                                <input type="text" name="answer-{{ $quest->id }}-text" data-answer-type="text" data-answer="{{ $answer->answer }}" class="border-2 rounded-lg border-gray-200 rounded px-3 py-4 w-full focus:outline-none focus:border-purple-300" placeholder="Введите ответ">
                                                                             </label>    
                                                                     @endif
                                                                 @endforeach
