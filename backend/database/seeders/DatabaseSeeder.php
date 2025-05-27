@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            // ClassesSeeder::class,        //work, home
-            // add_admin_user::class        //work, home
-            // add_basic_subject::class     //home,
+            ClassesSeeder::class,   
+            add_admin_user::class,   
+            add_basic_subject::class, 
         ]);
     }
 }

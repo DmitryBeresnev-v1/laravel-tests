@@ -17,22 +17,37 @@ class add_basic_subject extends Seeder
             [
                 'name' => 'Физика',
                 'url_name' => 'physics',
-                'description' => 'Наука о мире вокруг нас: о движении, силах, энергии и законах природы',
+                'description' => 'Наука о природе и её законах',
+                'color' => 'purple',
+                'icon-subject' => 'fas fa-atom',
             ],
             [
                 'name' => 'Информатика',
                 'url_name' => 'computer-science',
-                'description' => 'Наука о компьютерах, данных и том, как создавать программы и решать задачи с их помощью.',
+                'description' => 'Изучение компьютеров и программирования',
+                'color' => 'blue',
+                'icon_subject' => 'fas fa-laptop-code',
             ],
-                        [
+            [
                 'name' => 'Биология',
                 'url_name' => 'biology',
-                'description' => 'Наука о живых организмах: от клеток до экосистем.',
+                'description' => 'Наука о живой природе',
+                'color' => 'red',
+                'icon_subject' => 'fas fa-dna',
             ],
-                        [
+            [
                 'name' => 'Английский язык',
                 'url_name' => 'english',
-                'description' => 'Предмет, помогающий понимать, читать, писать и говорить на международном языке общения.',
+                'description' => 'Международный язык общения',
+                'color' => 'yellow',
+                'icon_subject' => 'fas fa-language',
+            ],
+            [
+                'name' => 'Математика',
+                'url_name' => 'math',
+                'description' => 'Царица всех наук',
+                'color' => 'green',
+                'icon_subject' => 'fas fa-square-root-alt',
             ],
          ]);
     }

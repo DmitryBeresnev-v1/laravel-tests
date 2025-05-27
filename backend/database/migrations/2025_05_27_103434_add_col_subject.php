@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('superAdmin')->default(false);
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->text('color');
+            $table->text('icon_subject');
         });
     }
 
@@ -21,8 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('superAdmin');
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->dropColumn('color');
+            $table->dropColumn('icon_subject');
         });
     }
 };

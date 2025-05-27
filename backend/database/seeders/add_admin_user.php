@@ -19,6 +19,8 @@ class add_admin_user extends Seeder
         'name' => 'Test User',
         'email' => 'test@example.com',
         'password' => Hash::make('12345'),
+        'login' => 'admin',
+        'superAdmin' => true,
         ]);
     }
 }

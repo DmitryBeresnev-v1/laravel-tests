@@ -10,9 +10,12 @@ class Subject extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'name',
         'description',
-        'url_name'
+        'url_name',
+        'color',
+        'icon_subject'
     ];
 
     public function topics()
