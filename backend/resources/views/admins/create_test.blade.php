@@ -8,9 +8,15 @@
         <h1 class="page-title">Создание теста</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin/topic">Мои темы</a></li>
-                <li class="breadcrumb-item"><a href="/admin/topic/{topic->id}">{topic->name}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Создание теста</li>
+
+                @if ($readonly)
+                    <li class="breadcrumb-item"><a href="/admin/topic">Мои темы</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/topic/{{ $topic->id }}">{{ $topic->title }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Создание теста</li>
+                @else
+                    <li class="breadcrumb-item"><a href="/admin/topic">Мои темы</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Создание теста</li>
+                @endif
             </ol>
         </div>
     </div>

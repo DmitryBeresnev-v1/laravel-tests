@@ -32,13 +32,14 @@
             <li class="slide">
                 <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-layers"></i><span class="side-menu__label">Клиент</span><i class="angle fe fe-chevron-right"></i></a>
                 <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="javascript:void(0)">Предметы</a></li>
+                    <!-- <li class="side-menu-label1"><a href="javascript:void(0)">Предметы</a></li> -->
                     <li><a href="/cards" class="slide-item"> Общий</a></li>
-                    <li><a href="/cards/create" class="slide-item"> Предмет 1</a></li>
-                    <li><a href="/cards/create" class="slide-item"> Предмет 2</a></li>
+                    @foreach ($subjects as $subject)
+                        <li><a href="{{ route('client.subject', ['nameSubject' => $subject->url_name])}} " target="_blank" class="slide-item"> {{ $subject->name }}</a></li>
+                    @endforeach
                 </ul>
             </li>
-
+            @if (Auth::user()->superAdmin == true)
             <li class="sub-category">
                 <h3>Администратор</h3>
             </li>
@@ -49,10 +50,10 @@
                 </li>
 
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/subject"><i class="side-menu__icon fe fe-cpu"></i><span class="side-menu__label">Создать предмет</span></a>
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="/admin/subject/create"><i class="side-menu__icon fe fe-cpu"></i><span class="side-menu__label">Создать предмет</span></a>
                 </li>
             </li>
-
+            @endif
         </ul>
         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"/></svg></div>
     </div>
