@@ -13,7 +13,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::where('name' , 'url_name')->get();
+        $subjects = Subject::with('topics')->get();
             
         return view('client.subjects', ['subjects' => $subjects]);
     }

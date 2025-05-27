@@ -15,18 +15,18 @@ class add_basic_subject extends Seeder
     {
          DB::table('subjects')->insert([
             [
-                'name' => 'Физика',
-                'url_name' => 'physics',
-                'description' => 'Наука о природе и её законах',
-                'color' => 'purple',
-                'icon-subject' => 'fas fa-atom',
-            ],
-            [
                 'name' => 'Информатика',
                 'url_name' => 'computer-science',
                 'description' => 'Изучение компьютеров и программирования',
                 'color' => 'blue',
                 'icon_subject' => 'fas fa-laptop-code',
+            ],
+            [
+                'name' => 'Математика',
+                'url_name' => 'math',
+                'description' => 'Царица всех наук',
+                'color' => 'green',
+                'icon_subject' => 'fas fa-square-root-alt',
             ],
             [
                 'name' => 'Биология',
@@ -43,11 +43,11 @@ class add_basic_subject extends Seeder
                 'icon_subject' => 'fas fa-language',
             ],
             [
-                'name' => 'Математика',
-                'url_name' => 'math',
-                'description' => 'Царица всех наук',
-                'color' => 'green',
-                'icon_subject' => 'fas fa-square-root-alt',
+                'name' => 'Физика',
+                'url_name' => 'physics',
+                'description' => 'Наука о природе и её законах',
+                'color' => 'purple',
+                'icon-subject' => 'fas fa-atom',
             ],
          ]);
     }

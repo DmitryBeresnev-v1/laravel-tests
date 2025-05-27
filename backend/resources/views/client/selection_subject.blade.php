@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $subject->name }} | Обучение и тестирование</title>
+    <link rel="icon" href="{{ asset('assets/icon/user-graduate-solid.svg') }}" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -76,7 +77,7 @@
         <!-- Header -->
 
             <div class="flex items-center justify-center mb-4">
-                <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                <h1 class="text-4xl font-bold text-purple-600 bg-clip-text">
                     {{ $subject->name }}
                 </h1>
             </div>
