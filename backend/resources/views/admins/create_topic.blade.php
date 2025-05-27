@@ -59,7 +59,7 @@
                     </div>
                     
                     <div>
-                        <label class="form-label">Описание или обучающий материал</label>
+                        <label class="form-label">Обучающий материал</label>
                         <textarea class="content" name="topic_content" ></textarea>
                     </div>
                 </div>

@@ -11,13 +11,20 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function index($nameSubject)
+    public function index()
+    {
+        $subjects = Subject::where('name' , 'url_name')->get();
+            
+        return view('client.subjects', ['subjects' => $subjects]);
+    }
+
+    public function show($nameSubject)
     {
         $subject = Subject::where('url_name', $nameSubject)
             ->with('topics.tests.quests.answers')
             ->firstOrFail();
 
-        return view('client.form', ['subject' => $subject]);
+        return view('client.selection_subject', ['subject' => $subject]);
     }
 
     public function form1()
