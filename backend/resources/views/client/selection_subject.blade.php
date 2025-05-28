@@ -112,7 +112,7 @@
                     </div>
                     <div class="grid grid-cols-1 gap-7" id="topics-container">
                         <div id="topic-list">
-                            @foreach ($subject->topics as $topic)
+                            @foreach ($sortedTopics as $topic)
                                 <div class="topic-conteiner">
                                     <div class="full-topic" style="display:none">
                                         <div id="topic-detail" class="bg-white p-6 rounded-lg shadow fade-in">
@@ -327,7 +327,7 @@
 
 
      <!-- JQUERY JS -->
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script>
         
         // Current test state
@@ -566,6 +566,11 @@
             $('.topic-' + topicId).show(); //jQuery animation show
         }
 
+        // function showAllTests(){
+        //     $('.short-test').show();
+        //     $('.test-conteiner').show();
+        //     $('.topic-').show();
+        // }
     </script>
 </body>
 </html>

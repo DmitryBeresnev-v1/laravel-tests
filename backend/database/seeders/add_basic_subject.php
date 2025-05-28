@@ -49,6 +49,13 @@ class add_basic_subject extends Seeder
                 'color' => 'purple',
                 'icon-subject' => 'fas fa-atom',
             ],
+            [
+                'name' => 'История',
+                'url_name' => 'history',
+                'description' => 'Изучение прошлого человечества',
+                'color' => 'pink',
+                'icon-subject' => 'fas fa-globe-europe',
+            ],
          ]);
     }
 }

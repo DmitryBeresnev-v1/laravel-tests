@@ -14,6 +14,9 @@ use App\Http\Controllers\ClassesController;
 
 //use App\Http\Middleware\Superadmin;
 
+Route::get('/', function () {
+    return redirect('/client');
+});
 //Клиентская часть
 Route::get('/form1', [ClientController::class, 'form1']);
 Route::get('/form2', [ClientController::class, 'form2']);

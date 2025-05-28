@@ -24,7 +24,11 @@ class ClientController extends Controller
             ->with('topics.tests.quests.answers')
             ->firstOrFail();
 
-        return view('client.selection_subject', ['subject' => $subject]);
+        $sortedTopics = $subject->topics->sortBy(function ($topic) {
+            return $topic->class->id;
+        });
+
+        return view('client.selection_subject', ['subject' => $subject, 'sortedTopics' => $sortedTopics]);
     }
 
     public function form1()

@@ -21,7 +21,7 @@ class LoginController extends Controller
         {
             return redirect('/admin/topic');
         }
-        return back()->withInput()->withErrors("User wasn`t found");
+        return redirect()->back()->withInput()->withErrors("User wasn`t found");
     }
 
     public function signout ()

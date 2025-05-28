@@ -33,7 +33,7 @@
                 <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-layers"></i><span class="side-menu__label">Клиент</span><i class="angle fe fe-chevron-right"></i></a>
                 <ul class="slide-menu">
                     <!-- <li class="side-menu-label1"><a href="javascript:void(0)">Предметы</a></li> -->
-                    <li><a href="/cards" class="slide-item"> Общий</a></li>
+                    <li><a href="/client" target="_blank" class="slide-item"> Общий</a></li>
                     @foreach ($subjects as $subject)
                         <li><a href="{{ route('client.subject', ['nameSubject' => $subject->url_name])}} " target="_blank" class="slide-item"> {{ $subject->name }}</a></li>
                     @endforeach
