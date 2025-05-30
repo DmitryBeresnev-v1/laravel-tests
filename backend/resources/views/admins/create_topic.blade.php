@@ -77,14 +77,14 @@
 @section('scripts')
 
         <!-- INTERNAL WYSIWYG Editor JS -->
-    <script src="{{asset('assets/plugins/wysiwyag/jquery.richtext.js')}}"></script>
-    <script src="{{asset('assets/plugins/wysiwyag/wysiwyag.js')}}"></script> 
+    <script src="{{secure_asset('assets/plugins/wysiwyag/jquery.richtext.js')}}"></script>
+    <script src="{{secure_asset('assets/plugins/wysiwyag/wysiwyag.js')}}"></script> 
     <!-- SELECT2 JS -->
-    <script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{secure_asset('assets/plugins/select2/select2.full.min.js') }}"></script>
 
         <!-- FORMVALIDATION JS -->
-    <script src="{{ asset('assets/js/form-validation.js') }}"></script>
+    <script src="{{secure_asset('assets/js/form-validation.js') }}"></script>
 
         <!-- CUSTOM JS -->
-    <!-- <script src="{{ asset('assets/js/custom.js') }}"></script> -->
+    <!-- <script src="{{secure_asset('assets/js/custom.js') }}"></script> -->
 @endsection
