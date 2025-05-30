@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ru" dir="ltr">
 
 <head>
 
@@ -108,7 +108,7 @@
     <script src="{{secure_asset('assets/js/jquery.min.js')}}"></script>
 
     <!-- BOOTSTRAP JS -->
-    <script src=".{{secure_asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{secure_asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{secure_asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 
     <!-- SHOW PASSWORD JS -->
