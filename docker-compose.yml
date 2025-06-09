@@ -1,4 +1,6 @@
 services:
+
+# MySql
    mysql:
       image: mysql:latest
       container_name: mysql
@@ -10,11 +12,12 @@ services:
       volumes:
          - ./mysql:/var/lib/mysql
       networks:
-         - test-network
+         - laravelApp-Tests
       ports:
          - "3306:3306"
       restart: on-failure
 
+# phpmyadmin
    phpmyadmin:
       image: phpmyadmin:latest
       container_name: phpmyadmin
@@ -23,12 +26,14 @@ services:
          PMA_PORT: 3306
          MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       networks:
-         - test-network
+         - laravelApp-Tests
+         - npm_proxy
       ports:
          - "8080:80"
       depends_on:
          - mysql
 
+# Laravel
    laravel:
       container_name: laravel
       image: bitnami/laravel:latest
@@ -44,12 +49,15 @@ services:
       ports:
          - "8000:8000"
       networks:
-         - test-network
+         - laravelApp-Tests
+         - npm_proxy
       depends_on:
          - mysql
       command: sh -c "php artisan serve --host=0.0.0.0 --port=8000"
       restart: on-failure
 
 networks:
-   test-network:
+   laravelApp-Tests:
       driver: bridge
+   npm_proxy:
+      external: true

@@ -1,2 +1,4 @@
 docker run --rm -v D:/project-folder/backend:/app -w /app composer install
 docker-compose exec laravel php artisan key:generate
+
+docker network create npm_proxy
