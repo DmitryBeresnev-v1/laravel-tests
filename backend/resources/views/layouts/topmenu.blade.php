@@ -26,11 +26,11 @@
                                     <div class="drop-heading">
                                         <div class="text-center">
                                             <h5 class="text-dark mb-0 fs-14 fw-semibold">{{Auth::user()->name}}</h5>
-                                            <small class="text-muted">Senior Admin</small>
+                                            <small class="text-muted">Учитель</small>
                                         </div>
                                     </div>
                                     <a class="dropdown-item" href="{{ route('signout') }}">
-                                        <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
+                                        <i class="dropdown-icon fe fe-alert-circle"></i> Выход
                                     </a>
                                 </div>
                             </div>

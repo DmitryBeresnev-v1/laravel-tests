@@ -57,14 +57,14 @@
                         <form action="login" method="post" class="login100-form validate-form">
                         @csrf
                             <span class="login100-form-title pb-5">
-                                Login
+                                Авторизация
                             </span>
                             <div class="panel panel-primary">
                                 <div class="tab-menu-heading">
                                     <div class="tabs-menu1">
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs">
-                                            <li class="mx-0"><a href="#tab5" class="active" data-bs-toggle="tab">Login</a></li>
+                                            <li class="mx-0"><a href="#tab5" class="active" data-bs-toggle="tab">Вход</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -75,17 +75,17 @@
                                                 <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                                     <i class="mdi mdi-account text-muted" aria-hidden="true"></i>
                                                 </a>
-                                                <input class="input100 border-start-0 form-control ms-0" name="login" type="login" placeholder="Login">
+                                                <input class="input100 border-start-0 form-control ms-0" name="login" type="login" placeholder="Логин">
                                             </div>
                                             <div class="wrap-input100 validate-input input-group" id="Password-toggle">
                                                 <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                                     <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
                                                 </a>
-                                                <input class="input100 border-start-0 form-control ms-0" name="password" type="password" placeholder="Password">
+                                                <input class="input100 border-start-0 form-control ms-0" name="password" type="password" placeholder="Пароль">
                                             </div>
                                             <div class="container-login100-form-btn">
                                                 <button type="submit" class="login100-form-btn btn-primary">
-                                                        Login
+                                                        Войти
                                                 </button>
                                             </div>
                                             </div>
