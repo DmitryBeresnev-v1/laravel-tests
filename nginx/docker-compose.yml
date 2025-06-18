@@ -24,7 +24,7 @@ services:
     depends_on:
       nginx
     networks:
-      nginx_net
+      - nginx_net
 
 networks:
   nginx_net:
