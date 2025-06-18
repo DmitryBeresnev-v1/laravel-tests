@@ -11,7 +11,7 @@ services:
       - ./certbot/www:/var/www/certbot           # for certbot challenge
     restart: unless-stopped
     networks:
-      - nginx_net
+      - nginx-net
 
   certbot:
     image: certbot/certbot
@@ -20,7 +20,7 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     networks:
-      - nginx_net
+      - nginx-net
 
 networks:
   nginx-net:
