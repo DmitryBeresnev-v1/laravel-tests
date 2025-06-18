@@ -24,4 +24,4 @@ services:
 
 networks:
   nginx_net:
-    driver: bridge
+    external: true

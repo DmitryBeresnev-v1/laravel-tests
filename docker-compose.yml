@@ -55,5 +55,5 @@ services:
       restart: on-failure
 
 networks:
-   nginx-net:
-      driver: bridge
+   nginx_net:
+      external: true
