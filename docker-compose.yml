@@ -12,7 +12,7 @@ services:
       volumes:
          - ./mysql:/var/lib/mysql
       networks:
-         - laravelApp-Tests
+         - nginx-net
       ports:
          - "3306:3306"
       restart: on-failure
@@ -26,8 +26,7 @@ services:
          PMA_PORT: 3306
          MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       networks:
-         - laravelApp-Tests
-         - npm_proxy
+         - nginx-net
       ports:
          - "8080:80"
       depends_on:
@@ -49,15 +48,12 @@ services:
       ports:
          - "8000:8000"
       networks:
-         - laravelApp-Tests
-         - npm_proxy
+         - nginx-net
       depends_on:
          - mysql
       command: sh -c "php artisan serve --host=0.0.0.0 --port=8000"
       restart: on-failure
 
 networks:
-   laravelApp-Tests:
+   nginx-net:
       driver: bridge
-   npm_proxy:
-      external: true
