@@ -1,0 +1,20 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d         # конфиги виртуальных хостов
+      - ./nginx/html:/usr/share/nginx/html       # сайт (если статика)
+      - ./nginx/logs:/var/log/nginx              # логи
+      - ./certbot/conf:/etc/letsencrypt          # config for certbot certificates
+      - ./certbot/www:/var/www/certbot           # for certbot challenge
+    restart: unless-stopped
+    networks:
+      - nginx_net
+
+networks:
+  nginx_net:
+    driver: bridge
