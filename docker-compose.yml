@@ -46,7 +46,7 @@ services:
       volumes:
          - ./backend:/app
       ports:
-         - "8000:8000"
+         - "8002:8000"
       networks:
          - nginx-net
       depends_on:
