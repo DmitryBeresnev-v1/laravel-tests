@@ -23,5 +23,5 @@ services:
       - nginx_net
 
 networks:
-  nginx_net:
+  nginx-net:
     external: true

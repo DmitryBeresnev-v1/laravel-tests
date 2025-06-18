@@ -55,5 +55,5 @@ services:
       restart: on-failure
 
 networks:
-   nginx_net:
+   nginx-net:
       external: true
