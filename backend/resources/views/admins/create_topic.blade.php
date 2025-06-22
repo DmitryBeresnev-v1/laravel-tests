@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <form class="needs-validation" action="{{ secure_route('topic.store') }}" method="POST" novalidate>
+        <form class="needs-validation" action="{{ route('topic.store') }}" method="POST" novalidate>
         @csrf 
             <div class="card">
                 <div class="card-header">
