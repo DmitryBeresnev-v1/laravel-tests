@@ -17,6 +17,9 @@ use App\Http\Controllers\ClassesController;
 Route::get('/', function () {
     return redirect('/client');
 });
+Route::get('/admin', function () {
+    return redirect('/login');
+});
 //Клиентская часть
 Route::get('/form1', [ClientController::class, 'form1']);
 Route::get('/form2', [ClientController::class, 'form2']);
