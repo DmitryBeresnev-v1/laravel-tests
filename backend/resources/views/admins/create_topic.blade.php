@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <form class="needs-validation" action="{{ route('topic.store', false) }}" method="POST" novalidate autocomplete="on">
+        <form class="needs-validation" action="{{ url()->route('topic.store', [], false) }}" method="POST" novalidate autocomplete="on">
         @csrf 
             <div class="card">
                 <div class="card-header">
