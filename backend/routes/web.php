@@ -18,7 +18,7 @@ Route::get('/', function () {
     return redirect('/client');
 });
 Route::get('/admin', function () {
-    return redirect('/login');
+    return redirect('/admin/topic');
 });
 //Клиентская часть
 Route::get('/form1', [ClientController::class, 'form1']);
