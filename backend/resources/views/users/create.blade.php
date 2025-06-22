@@ -13,7 +13,7 @@
     </div>
 
     <div class="row">
-        <form action="{{ url()->route('user.store', [], false)}}" method="POST">
+        <form action="{{ url()->route('users.store', [], false)}}" method="POST">
         @csrf 
             <div class="card">
                 <div class="card-header">
