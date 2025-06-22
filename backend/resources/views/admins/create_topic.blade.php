@@ -86,5 +86,5 @@
     <script src="{{secure_asset('assets/js/form-validation.js') }}"></script>
 
         <!-- CUSTOM JS -->
-    <!-- <script src="{{secure_asset('assets/js/custom.js') }}"></script> -->
+    {{-- <script src="{{secure_asset('assets/js/custom.js') }}"></script> --}}
 @endsection
