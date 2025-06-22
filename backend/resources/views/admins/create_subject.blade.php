@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="col-md-6  col-xl-6">
-            <form action="{{ route('subject.store')}}" method="POST">
+            <form action="{{ url()->route('subject.store', [], false)}}" method="POST">
             @csrf    
                 <div class="card">     
                     <div class="card-header">
