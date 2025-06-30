@@ -406,7 +406,7 @@
                             Закрыть
                         </button>
                         <div class="text-gray-500 italic" id="selectedClassDisplay">
-                            Выбран класс: все
+                            Выбраны все классы
                         </div>
                     </div>
                 </div>
@@ -672,7 +672,7 @@
             if (classID>0) {
                 $('.topic-conteiner').hide();
                 $('.topic-class-'+classID).show();
-                document.getElementById('selectedClassDisplay').textContent = 'Выбран класс: Класс' + classID;
+                document.getElementById('selectedClassDisplay').textContent = 'Выбран ' + classID + ' класс';
             } else {
                 $('.topic-conteiner').show();
                 document.getElementById('selectedClassDisplay').textContent = 'Выбраны все классы';
