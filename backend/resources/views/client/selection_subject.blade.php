@@ -381,7 +381,7 @@
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             <div 
                                 class="class-option bg-white border border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:bg-purple-50 hover:border-purple-300"
-                                onclick="selectClass({{ $class->class_number }})"
+                                onclick="selectClass('0')"
                             >
                                 <div class="text-purple-600 mb-2">
                                     <i class="fas fa-chalkboard-teacher text-3xl"></i>
