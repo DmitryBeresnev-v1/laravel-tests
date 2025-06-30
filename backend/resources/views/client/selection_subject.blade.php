@@ -342,15 +342,6 @@
             </div>
 
             <!-- Модальное окно -->
-            {{-- <div id="classModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-                <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
-                    <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-600 text-xl font-bold hover:text-red-500">&times;</button>
-                    <h2 class="text-xl font-semibold mb-4">Выберите класс</h2>
-                    <p>Тут можно вставить список классов или другой контент.</p>
-                </div>
-            </div> --}}
-
-
             <!-- Modal Backdrop -->
             <div 
                 id="classModal" 
@@ -387,7 +378,7 @@
                                     <i class="fas fa-chalkboard-teacher text-3xl"></i>
                                 </div>
                                 <h3 class="font-semibold text-gray-800">Все</h3>
-                                <p class="text-sm text-gray-500 mt-1">Grade ${i > 10 ? '11+' : i}</p>
+                                {{-- <p class="text-sm text-gray-500 mt-1">Grade ${i > 10 ? '11+' : i}</p> --}}
                             </div>
                             <!-- Generate class options from 1 to 11 -->
                             @foreach ($classes as $class)
@@ -399,7 +390,7 @@
                                         <i class="fas fa-chalkboard-teacher text-3xl"></i>
                                     </div>
                                     <h3 class="font-semibold text-gray-800">{{ $class->name }} </h3>
-                                    <p class="text-sm text-gray-500 mt-1">Grade ${i > 10 ? '11+' : i}</p>
+                                    {{-- <p class="text-sm text-gray-500 mt-1">Grade ${i > 10 ? '11+' : i}</p> --}}
                                 </div>
                             @endforeach
                         </div>
@@ -415,7 +406,7 @@
                             Закрыть
                         </button>
                         <div class="text-gray-500 italic" id="selectedClassDisplay">
-                            Выбраны класс: все
+                            Выбран класс: все
                         </div>
                     </div>
                 </div>
@@ -681,8 +672,10 @@
             if (classID>0) {
                 $('.topic-conteiner').hide();
                 $('.topic-class-'+classID).show();
+                document.getElementById('selectedClassDisplay').textContent = 'Выбран класс: Класс' + classID;
             } else {
                 $('.topic-conteiner').show();
+                document.getElementById('selectedClassDisplay').textContent = 'Выбраны все классы';
             }
             closeModal();            
         }
