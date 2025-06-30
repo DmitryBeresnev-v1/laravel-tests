@@ -107,7 +107,7 @@
 
                         {{-- Кнопка выбора классов --}}
                         <div class="chengeClassButton">
-                            <button onclick="openChangeClassese()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">Выбор класса</button>
+                            <button onclick="openModal()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">Выбор класса</button>
                         </div>
 
                         {{-- кнопка выхода из обзора темы --}}
@@ -117,40 +117,43 @@
                             </button>
                         </div>
                     </div>
+
                     <div class="grid grid-cols-1 gap-7" id="topics-container">
                         <div id="topic-list">
                             @foreach ($sortedTopics as $topic)
-                                <div class="topic-conteiner">
-                                    <div class="full-topic" style="display:none">
-                                        <div id="topic-detail" class="bg-white p-6 rounded-lg shadow fade-in">
-                                            <h3 id="topic-title" class="text-2xl font-bold mb-4">{{ $topic->title }}</h3>
-                                            <p id="topic-description" class="text-gray-700 mb-6">{!! $topic->content !!}</p>
+                                    <div class="topic-conteiner topic-class-{{ $topic->class->class_number }}">
+                                        <div class="full-topic" style="display:none">
+                                            <div id="topic-detail" class="bg-white p-6 rounded-lg shadow fade-in">
+                                                <h3 id="topic-title" class="text-2xl font-bold mb-4">{{ $topic->title }}</h3>
+                                                <p id="topic-description" class="text-gray-700 mb-6">{!! $topic->content !!}</p>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="short-topic study-card bg-white p-4 rounded-lg shadow mb-6">
-                                        <div class="ms-4 mb-2 mt-1">
-                                            <div class="flex justify-between items-start">
-                                                <h3 class="text-xl font-bold mb-2 text-gray-800"> {{ $loop->iteration }}. {{ $topic->title }}</h3>
-                                                <snap class="text-nowrap ml-4 bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-0.5 rounded"> 
-                                                    {{ $topic->class->name }}
-                                                </snap>
-                                            </div>
-                                            <p class="text-gray-600 mb-4">{{ $topic->description }}</p>
-                                            <div class="flex flex-wrap gap-3">
-                                                <button onclick="showTopic(this)" class="test-btn bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
-                                                    <i class="fas fa-book-open mr-2"></i> Учебный материал
-                                                </button>
-                                                <button onclick="showTests({{ $topic->id }})" class="test-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
-                                                    <i class="fas fa-question-circle mr-2"></i> Пройти тест
-                                                </button>
+                                        <div class="short-topic study-card bg-white p-4 rounded-lg shadow mb-6">
+                                            <div class="ms-4 mb-2 mt-1">
+                                                <div class="flex justify-between items-start">
+                                                    <h3 class="text-xl font-bold mb-2 text-gray-800"> {{ $loop->iteration }}. {{ $topic->title }}</h3>
+                                                    <snap class="text-nowrap ml-4 bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-0.5 rounded"> 
+                                                        {{ $topic->class->name }}
+                                                    </snap>
+                                                </div>
+                                                <p class="text-gray-600 mb-4">{{ $topic->description }}</p>
+                                                <div class="flex flex-wrap gap-3">
+                                                    <button onclick="showTopic(this)" class="test-btn bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
+                                                        <i class="fas fa-book-open mr-2"></i> Учебный материал
+                                                    </button>
+                                                    <button onclick="showTests({{ $topic->id }})" class="test-btn bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center">
+                                                        <i class="fas fa-question-circle mr-2"></i> Пройти тест
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             @endforeach
                         </div>
                     </div>
+
+
                 </section>
             </div>
 
@@ -378,7 +381,7 @@
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             <div 
                                 class="class-option bg-white border border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:bg-purple-50 hover:border-purple-300"
-                                onclick="selectClass(${i})"
+                                onclick="selectClass({{ $class->class_number }})"
                             >
                                 <div class="text-purple-600 mb-2">
                                     <i class="fas fa-chalkboard-teacher text-3xl"></i>
@@ -390,7 +393,7 @@
                             @foreach ($classes as $class)
                                 <div 
                                     class="class-option bg-white border border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:bg-purple-50 hover:border-purple-300"
-                                    onclick="selectClass(${i})"
+                                    onclick="selectClass({{ $class->class_number }})"
                                 >
                                     <div class="text-purple-600 mb-2">
                                         <i class="fas fa-chalkboard-teacher text-3xl"></i>
@@ -640,12 +643,14 @@
 
             $('.short-topic').hide();
             $('.backButtonTopic').show();
+            $('.chengeClassButton').hide();
         }
 
         function backToTopics() {
             $('.full-topic').hide();
             $('.short-topic').show();
             $('.backButtonTopic').hide();
+            $('.chengeClassButton').show();
         }
 
         function backToTests() {
@@ -673,7 +678,12 @@
             $('.short-test').show();   
         }
 
-        function openChangeClassese() {
+        function selectClass(classID) {            
+            $('.topic-conteiner').hide();
+            $('.topic-class-'+classID).show();            
+        }
+        
+        function openModal() {
             document.getElementById('classModal').classList.remove('hidden');
         }
 
