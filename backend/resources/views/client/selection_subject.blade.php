@@ -104,6 +104,13 @@
                             <i class="fas fa-list-ul mr-3 text-purple-500"></i>
                             <span id="selected-subject-text">Список тем</span>
                         </h2>
+
+                        {{-- Кнопка выбора классов --}}
+                        <div class="chengeClassButton">
+                            <button onclick="openChangeClassese()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">Выбор класса</button>
+                        </div>
+
+                        {{-- кнопка выхода из обзора темы --}}
                         <div class="backButtonTopic" style="display:none">
                             <button onclick="backToTopics()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">
                                 <i class="fas fa-arrow-left mr-2"></i> Назад
@@ -156,6 +163,13 @@
                             <i class="fas fa-list-check text-purple-500 mr-3"></i>
                             <span id="selected-subject-text">Список тестов</span>
                         </h2>
+                        
+                        {{-- Нкопка для показа всех тестов --}}
+                        <div class="showAllTestsButton">
+                            <button onclick="showAllTests()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">Все тесты</button>
+                        </div>
+
+                        {{-- Нконка выхода из теста --}}
                         <div class="backButtonTest" style="display:none">
                             <button onclick="backToTests()" class="text-purple-600 hover:text-purple-800 font-medium flex items-center">
                                 <i class="fas fa-arrow-left mr-2"></i> Назад
@@ -323,6 +337,87 @@
                 </section>
 
             </div>
+
+            <!-- Модальное окно -->
+            {{-- <div id="classModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+                    <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-600 text-xl font-bold hover:text-red-500">&times;</button>
+                    <h2 class="text-xl font-semibold mb-4">Выберите класс</h2>
+                    <p>Тут можно вставить список классов или другой контент.</p>
+                </div>
+            </div> --}}
+
+
+            <!-- Modal Backdrop -->
+            <div 
+                id="classModal" 
+                class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden"
+            >
+                <!-- Modal Container -->
+                <div 
+                    id="modalContainer" 
+                    class="bg-white rounded-xl shadow-2xl overflow-hidden w-full max-w-md modal-enter"
+                >
+                    <!-- Modal Header -->
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-500 p-5 text-white">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold">Выбор класса</h2>
+                            <button 
+                                id="closeModalBtn" 
+                                class="text-white hover:text-gray-200 focus:outline-none"
+                                onclick='closeModal()'
+                            >
+                                <i class="fas fa-times text-xl"></i>
+                            </button>
+                        </div>
+                        <p class="text-purple-100 mt-1">Выберите класс из предложенных ниже вариантов.</p>
+                    </div>
+                    
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <div 
+                                class="class-option bg-white border border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:bg-purple-50 hover:border-purple-300"
+                                onclick="selectClass(${i})"
+                            >
+                                <div class="text-purple-600 mb-2">
+                                    <i class="fas fa-chalkboard-teacher text-3xl"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-800">Все</h3>
+                                <p class="text-sm text-gray-500 mt-1">Grade ${i > 10 ? '11+' : i}</p>
+                            </div>
+                            <!-- Generate class options from 1 to 11 -->
+                            @foreach ($classes as $class)
+                                <div 
+                                    class="class-option bg-white border border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:bg-purple-50 hover:border-purple-300"
+                                    onclick="selectClass(${i})"
+                                >
+                                    <div class="text-purple-600 mb-2">
+                                        <i class="fas fa-chalkboard-teacher text-3xl"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-gray-800">{{ $class->name }} </h3>
+                                    <p class="text-sm text-gray-500 mt-1">Grade ${i > 10 ? '11+' : i}</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                    <!-- Modal Footer -->
+                    <div class="bg-gray-50 px-5 py-4 flex justify-between">
+                        <button 
+                            id="cancelBtn" 
+                            class="text-gray-600 hover:text-gray-800 font-medium px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+                            onclick='closeModal()'
+                        >
+                            Закрыть
+                        </button>
+                        <div class="text-gray-500 italic" id="selectedClassDisplay">
+                            Выбраны класс: все
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
 
 
@@ -402,6 +497,7 @@
             testArea.show();                                        //Отображает всю панель теста 
 
             $('.short-test').hide();                                //Скрывает список доступных тестов
+            $('.showAllTestsButton').hide();                        //Скрывает кнопку для отображения всех тестов 
             $('.backButtonTest').show();                            //Обображение кнопки возрата к списку
 
             updateQuestion();
@@ -557,6 +653,7 @@
             $('.full-test').hide();
             $('.short-test').show();
             $('.backButtonTest').hide();
+            $('.showAllTestsButton').show();
         }
 
         function showTests(topicId){
@@ -571,6 +668,18 @@
         //     $('.test-conteiner').show();
         //     $('.topic-').show();
         // }
+
+        function showAllTests() {
+            $('.short-test').show();   
+        }
+
+        function openChangeClassese() {
+            document.getElementById('classModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('classModal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>

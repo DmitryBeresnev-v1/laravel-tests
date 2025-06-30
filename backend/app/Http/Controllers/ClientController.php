@@ -21,14 +21,17 @@ class ClientController extends Controller
     public function show($nameSubject)
     {
         $subject = Subject::where('url_name', $nameSubject)
-            ->with('topics.tests.quests.answers')
+            ->with('topics.class', 'topics.tests.quests.answers')
             ->firstOrFail();
 
         $sortedTopics = $subject->topics->sortBy(function ($topic) {
             return $topic->class->id;
         });
+        // Собираем уникальные классы, в которых есть темы
+        $classes = $subject->topics->pluck('class')->unique('id')->sortBy('id');
 
-        return view('client.selection_subject', ['subject' => $subject, 'sortedTopics' => $sortedTopics]);
+        return view('client.selection_subject', ['subject' => $subject, 'sortedTopics' => $sortedTopics, 'classes' => $classes]);
+
     }
 
     public function form1()
