@@ -679,8 +679,13 @@
         }
 
         function selectClass(classID) {            
-            $('.topic-conteiner').hide();
-            $('.topic-class-'+classID).show();            
+            if (classID>0) {
+                $('.topic-conteiner').hide();
+                $('.topic-class-'+classID).show();
+            } else {
+                $('.topic-conteiner').show();
+            }
+            closeModal();            
         }
         
         function openModal() {
