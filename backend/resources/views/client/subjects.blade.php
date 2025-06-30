@@ -43,7 +43,7 @@
             <!-- Карточка предмета -->
 
             @foreach ($subjects as $subject)
-                @if ($subject=='main')
+                @if ($subject->visible == 'main')
                     <div class="card h-64">
                         <div class="card-inner relative w-full h-full">
                             <div class="card-front bg-white rounded-xl shadow-xl p-6 flex flex-col items-center justify-center border-2 border-{{$subject->color}}-200">
