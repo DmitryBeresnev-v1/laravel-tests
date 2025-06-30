@@ -503,6 +503,10 @@
             $('.showAllTestsButton').hide();                        //Скрывает кнопку для отображения всех тестов 
             $('.backButtonTest').show();                            //Обображение кнопки возрата к списку
 
+            $('.results-area').hide();
+            $('.full-test').hide();
+            $('.backButtonTest').hide();
+
             updateQuestion();
         }
 
