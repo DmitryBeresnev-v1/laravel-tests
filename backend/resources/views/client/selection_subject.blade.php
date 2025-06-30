@@ -675,6 +675,7 @@
         // }
 
         function showAllTests() {
+            console.log('click');
             $('.short-test').show();   
         }
 
