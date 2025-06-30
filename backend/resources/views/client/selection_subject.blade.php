@@ -676,7 +676,7 @@
 
         function showAllTests() {
             console.log('click');
-            $('.short-test').show();   
+            $('.test-conteiner').show();   
         }
 
         function selectClass(classID) {            
