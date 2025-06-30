@@ -504,8 +504,6 @@
             $('.backButtonTest').show();                            //Обображение кнопки возрата к списку
 
             $('.results-area').hide();
-            $('.full-test').hide();
-            $('.backButtonTest').hide();
 
             updateQuestion();
         }
