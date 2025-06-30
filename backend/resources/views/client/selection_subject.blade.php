@@ -310,7 +310,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <button onclick="restartTest()" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                                            <button onclick="startTest(this)" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
                                                 <i class="fas fa-redo mr-2"></i> Пройти еще раз
                                             </button>
                                         </div>
@@ -631,8 +631,6 @@
             resultsArea.show();
             testArea.hide();
         }
-
-
 
         // Topic section
         function showTopic(d) {
