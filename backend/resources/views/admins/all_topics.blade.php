@@ -42,7 +42,7 @@
                                         <td>{{ $index->class->class_number }}</td>
                                         <td>{{ $index->subject->name }}</td>
                                         <td>{{ $index->title }}</td>
-                                        <td>{{ $index->tests->isNotEmpty() ? 'Есть' : 'Нету' }} </td>
+                                        <td>{{ $index->tests->isNotEmpty() ? 'Да' : 'Нет' }} </td>
                                         <td>{{ $index->user->name }}</td>
                                         <td><span>{{ $index->created_at->locale('ru')->timezone('Europe/Moscow')->format('d/m/Y - H:i') }}</span></td>                                        
                                     </tr>
