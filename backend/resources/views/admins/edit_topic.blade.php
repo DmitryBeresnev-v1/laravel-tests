@@ -24,12 +24,12 @@
                     <div class="row">
                         <div class="form-group">
                             <label class="form-label">Наименование темы</label>
-                            <input type="text" class="form-control" name="topic_name" placeholder="{{ $topic->title }}" required>
+                            <input type="text" class="form-control" name="topic_name" placeholder="Тема" required value="{{ $topic->title }}">
                             <div class="invalid-feedback">Пожалуйста введите наименование темы.</div> 
                         </div>
                         <div class="form-group">
                             <label class="form-label">Краткое описание темы</label>
-                            <input type="text" class="form-control" name="topic_description" placeholder="{{ $topic->description }}" required>
+                            <input type="text" class="form-control" name="topic_description" placeholder="Описание" value="{{ $topic->description }}" required>
                             <div class="invalid-feedback">Пожалуйста введите краткое описание темы.</div> 
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                                 <select name="subject_select" class="form-control form-select" required>
                                     <option selected disabled value="">Выбирите предмет</option>
                                     @foreach ($subject as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                            <option value="{{$item->id}}" {{ $item->id == $topic->subject_id ? 'selected' : '' }}>{{$item->name}}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">Пожалуйста выберите предмет или дисциплину.</div>
@@ -50,7 +50,7 @@
                                 <select name="class_select" class="form-control form-select" required>
                                     <option selected disabled value="">Выбирите класс</option>
                                     @foreach ($class as $item)
-                                        <option value="{{$item->class_number}}">{{$item->name}}</option>
+                                        <option value="{{$item->class_number}}" {{ $item->class_number == $topic->class_id ? 'selected' : '' }}>{{$item->name}}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">Пожалуйста выберите класс.</div>
@@ -66,7 +66,7 @@
 
                 <div class="card-footer">
                     <a href="/admin/topic" class="btn btn-default">Назад</a>
-                    <button type="submit" class="btn btn-success my-1 float-end">Создать</button>
+                    <button type="submit" class="btn btn-success my-1 float-end">Изменить</button>
                 </div>
             </div>
         </form>

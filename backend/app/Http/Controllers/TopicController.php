@@ -70,8 +70,10 @@ class TopicController extends Controller
     {
         $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.quests'])->findOrFail($topicId);
         $hasTest = $topic->tests->isEmpty();
+        $class = School_class::all();
+        $subject = Subject::all();
 
-        return view('admins.edit_topic', ["topic"=>$topic, 'hasTest'=>$hasTest]);
+        return view('admins.edit_topic', ["topic"=>$topic, 'hasTest'=>$hasTest, "class" => $class, "subject" => $subject]);
     }
 
     /* Update the specified resource in storage. */
