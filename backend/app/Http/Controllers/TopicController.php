@@ -66,7 +66,7 @@ class TopicController extends Controller
     }
 
     /* Show the form for editing the specified resource. */
-    public function edit(string $id)
+    public function edit($topicId)
     {
         $topic = Topic::with(['subject', 'class', 'user', 'tests', 'tests.quests'])->findOrFail($topicId);
         $hasTest = $topic->tests->isEmpty();
