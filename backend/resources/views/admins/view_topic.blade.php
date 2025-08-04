@@ -58,7 +58,7 @@
                                         </div>
                                     @endif
                                 <div class="text-end">
-                                    <a class="btn btn-primary disabled" href="/admin/topic/{{ $topic->id }}/edit">Редактировать</a>
+                                    <a class="btn btn-primary" href="/admin/topic/{{ $topic->id }}/edit">Редактировать</a>
                                 </div>
                             
                             </div>
