@@ -77,9 +77,33 @@ class TopicController extends Controller
     }
 
     /* Update the specified resource in storage. */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $topicId)
     {
-        //
+        //        dd($request);
+        $validated = $request->validate([
+            'topic_name' => 'required|string|max:255',
+            'subject_select' => 'required|integer|min:1',
+            'class_select' => 'required|integer|min:1',
+            'topic_description' => 'required',
+            'topic_content' => 'required',
+        ]);
+
+        $topic = Topic::findOrFail($topicId);
+
+        $topic->update([
+           'title' => $validated['topic_name'],
+           'description' => $validated['topic_description'],
+           'content' => $validated['topic_content'],
+           'class_id' => $validated['class_select'],
+           'subject_id' => $validated['subject_select'],
+        //    'average_time' => 0;
+        //    'difficulty' => 0;
+           
+       ]);
+       
+       return redirect()->route('topic.show', ['topicId' => $topic->id])->with('success', 'Тема успешно обновлена');
+    //    return redirect()->back()->with('success', 'Record inserted successfully');
+  
     }
 
     /* Remove the specified resource from storage. */

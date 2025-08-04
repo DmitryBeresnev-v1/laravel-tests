@@ -42,14 +42,14 @@ Route::prefix('admin')
             -> group(function () {
                     Route::get('/', 'index');                               //Вывод всех тем клиента
                     Route::get('/all', [AdminController::class, 'show']);   //Вывод всех тем
-                    Route::get('/{topicId}', 'show');                       //Вывод конкретной темы 
+                    Route::get('/{topicId}', 'show')->name('topic.show');                       //Вывод конкретной темы 
 
                     Route::get('/create', 'create');                                                 //Форма создания темы
                     Route::get('/{topicId}/test/create', [TestController::class, 'create']);         //Форма создания теста из темы
                     Route::get('/{topicId}/edit', 'edit');                                           //Форма изменения темы
 
                     Route::post('/', 'store')->name('topic.store');         //Запись БД
-                    Route::put('/{topicId}', 'update');                     //Изменения БД
+                    Route::put('/{topicId}', 'update')->name('topic.update');                     //Изменения БД
                     Route::delete('/{topicId}/delete', 'destroy');          //Удаление БД
         });
 

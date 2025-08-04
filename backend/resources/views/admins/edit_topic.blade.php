@@ -14,8 +14,9 @@
     </div>
 
     <div class="row">
-        <form class="needs-validation" action="{{ url()->route('topic.store', [], false) }}" method="POST" novalidate autocomplete="on">
-        @csrf 
+        <form class="needs-validation" action="{{ url()->route('topic.update', ['topicId' => $topic->id], false) }}" method="POST" novalidate autocomplete="on">
+        @csrf
+        @method('PUT') 
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Добавление новой темы</h3>
