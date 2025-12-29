@@ -318,7 +318,7 @@
                                         <div class="short-test study-card bg-white p-4 rounded-lg shadow mb-6">
                                             <div class="ms-4 mb-2 mt-1">
                                                 <div class="flex justify-between items-start">
-                                                    <h3 class="text-xl font-bold mb-2 text-gray-800"> {{ $loop->iteration }}. {{ $test->title }}</h3>
+                                                    <h3 class="text-xl font-bold mb-2 text-gray-800">{{ $test->title }}</h3>
                                                     <snap class="text-nowrap ml-4 bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-0.5 rounded"> 
                                                         {{ $topic->class->name }}
                                                     </snap>
