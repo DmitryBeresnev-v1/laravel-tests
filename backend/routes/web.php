@@ -31,7 +31,7 @@ Route::get('/client/{nameSubject}', [ClientController::class, 'show']) -> name('
 Route::prefix('auth') -> controller(LoginController::class)
     -> group(function () {
             Route::get('/login', 'index') -> name('login');
-            Route::post('/login', 'login');
+            Route::post('/login', 'login') -> name('auth.login.submit');
             Route::get('/signout', 'signout') -> name('signout');
 });
 
