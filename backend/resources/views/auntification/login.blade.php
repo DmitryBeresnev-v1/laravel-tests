@@ -54,7 +54,7 @@
                 <!-- CONTAINER OPEN -->
                 <div class="container-login100">
                     <div class="wrap-login100 p-6">
-                        <form action="{{ url()->route('auth.login.submit')}}" method="post" class="login100-form validate-form">
+                        <form action="{{ url()->route('auth.login.submit', [], false))}}" method="post" class="login100-form validate-form">
                         @csrf
                             <span class="login100-form-title pb-5">
                                 Login
